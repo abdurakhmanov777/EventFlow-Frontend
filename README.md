@@ -1,3 +1,5 @@
-# MiniApp
+# MiniApp for Telegram
 
-Web page for the MiniApp Telegram
+## Описание
+
+Проект представляет собой MiniApp для Telegram, позволяющий пользователям создавать и управлять чат-ботами с использованием конструктора.
