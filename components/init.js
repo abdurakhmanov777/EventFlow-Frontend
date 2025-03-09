@@ -1,0 +1,46 @@
+import { initLocalization } from './localization.js';
+import { renderBotForm } from './pages/botForm/botForm.js';
+import { renderBotList } from './pages/botList/botList.js';
+import { renderMain } from './pages/main/main.js';
+import { renderSubscription } from './pages/subscription/subscription.js';
+import { renderSettings } from './pages/settings/settings.js';
+import { renderLanguage } from './pages/language/language.js';
+import { renderTheme } from './pages/theme/theme.js';
+import { initMenu, updateActiveButton, sidebar_passive } from './sidebar/sidebar.js';
+
+const tg = window.Telegram?.WebApp;
+let currentView = sessionStorage.getItem('page') || 'main';
+
+const renderers = {
+    main: renderMain,
+    botForm: renderBotForm,
+    botList: renderBotList,
+    subscription: renderSubscription,
+    settings: renderSettings,
+    language: renderLanguage,
+    theme: renderTheme,
+};
+
+export function switchView(view) {
+    currentView = view;
+    sessionStorage.setItem('page', view);
+    render();
+    sidebar_passive();
+    tg.BackButton[currentView === 'main' ? 'hide' : 'show']();
+    updateActiveButton(currentView);
+}
+
+function render() {
+    (renderers[currentView] || renderMain)();
+    const isMainView = ['main', 'subscription', 'settings'].includes(currentView);
+    document.getElementById('topPanel').style.display = isMainView ? 'flex' : 'none';
+}
+
+export async function initializeApp() {
+    await initLocalization();
+    switchView(currentView);
+    initMenu();
+    tg.BackButton.onClick(() => {
+        switchView(['language', 'theme'].includes(currentView) ? 'settings' : 'main');
+    });
+}

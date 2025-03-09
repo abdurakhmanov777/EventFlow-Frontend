@@ -1,0 +1,66 @@
+#botList {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#botListContainer {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    margin: 5%;
+    max-height: 80%;
+    overflow-y: auto;
+    position: relative;
+    padding: 20px;
+    box-sizing: border-box;
+    /* background-color: red; */
+    scrollbar-width: none;
+}
+
+#botListItems {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    padding: 0;
+    list-style-type: none;
+    margin: 0;
+    margin-top: 0;
+}
+
+
+.bot-button {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--tg-theme-button-text-color);
+}
+
+.bot-button:hover {
+    filter: brightness(0.9);
+}
+
+.center-message {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: var(--tg-viewport-height);
+    /* height: 100vh; */
+    font-size: 24px;
+    font-weight: 500;
+    color: red;
+    text-align: center;
+}
+
+.no-bots-message {
+    text-align: center;
+    font-size: 18px;
+    font-weight: 500;
+    color: #777;
+    padding: 20px;
+    margin: 0;
+}

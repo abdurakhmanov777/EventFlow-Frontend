@@ -1,0 +1,55 @@
+{
+    "main": {
+        "header": "Конструктор",
+        "createBot": "Создать бота",
+        "myBots": "Мои боты"
+    },
+
+    "sidebar": {
+        "main" : "Главная",
+        "subscription": "Подписка",
+        "settings": "Настройки"
+    },
+
+    "settings" : {
+        "copyUserId": "Ваш ID скопирован",
+        "subscription": {
+            "name": "Подписка",
+            "value": "Бесплатная",
+            "buy": "Купить"
+        },
+        "language": {
+            "name": "Язык системы",
+            "value": "Русский"
+        },
+        "theme": {
+            "name": "Тема",
+            "system": "Системная",
+            "dark": "Темная",
+            "light": "Светлая"
+        },
+        "support": {
+            "name": "Поддержка",
+            "value": "Телеграм"
+        }
+    },
+    "botForm": {
+        "placeholder": {
+            "name": "Имя бота",
+            "api": "Bot API"
+        },
+        "button": {
+            "back": "Назад",
+            "next": "Далее"
+        },
+        "error": {
+            "incorrect": "Incorrect",
+            "name": "имя бота",
+            "api": "bot API"
+        }
+    },
+
+    "successfully": "Данные успешно отправлены",
+    "unsuccessfulSending": "Ошибка при отправке данных",
+    "noBots": "У вас пока нет ботов"
+}

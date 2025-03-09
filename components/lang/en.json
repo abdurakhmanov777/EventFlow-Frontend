@@ -1,0 +1,56 @@
+{
+    "main": {
+        "header": "Constructor",
+        "createBot": "Create Bot",
+        "myBots": "My Bots"
+    },
+
+    "sidebar": {
+        "main" : "Main",
+        "subscription": "Subscription",
+        "settings": "Settings"
+    },
+
+    "settings" : {
+        "copyUserId": "Your ID has been copied",
+        "subscription": {
+            "name": "Subscription",
+            "value": "Free",
+            "buy": "Buy"
+        },
+        "language": {
+            "name": "System language",
+            "value": "English"
+        },
+        "theme": {
+            "name": "Theme",
+            "system": "System",
+            "dark": "Dark",
+            "light": "Light"
+        },
+        "support": {
+            "name": "Support",
+            "value": "Telegram"
+        }
+    },
+
+    "botForm": {
+        "placeholder": {
+            "name": "Bot Name",
+            "api": "Bot API"
+        },
+        "button": {
+            "back": "Back",
+            "next": "Next"
+        },
+        "error": {
+            "incorrect": "Incorrect",
+            "name": "bot name",
+            "api": "bot API"
+        }
+    },
+
+    "successfulSending": "The data has been sent successfully",
+    "unsuccessfulSending": "Error when sending data",
+    "noBots": "You have no bots yet"
+}
