@@ -1,5 +1,5 @@
 // import { switchView } from '../../index.js';
-import { editLocalization } from '../../localization.js';
+import { editLocalization } from '../../../utils/localization.js';
 
 export function renderLanguage() {
     let currentLanguage = localStorage.getItem('language') || 'ru';
@@ -17,7 +17,7 @@ export function renderLanguage() {
                         <small>English</small>
                     </div>
                     <i class='checkmark'>
-                        <img src='/miniapp/components/icons/svg/chekmark.svg'>
+                        <img src='/miniapp/img/icons/chekmark.svg'>
                     </i>
                 </label>
                 <label class='settings-option'>
@@ -27,7 +27,7 @@ export function renderLanguage() {
                         <small>Русский</small>
                     </div>
                     <i class='checkmark'>
-                        <img src='/miniapp/components/icons/svg/chekmark.svg'>
+                        <img src='/miniapp/img/icons/chekmark.svg'>
                     </i>
                 </label>
             </div>

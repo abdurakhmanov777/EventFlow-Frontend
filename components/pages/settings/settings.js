@@ -1,5 +1,5 @@
 import { switchView } from '../../init.js';
-import { arrow } from '../../icons/icons.js';
+import { arrow } from '../../icons.js';
 export function renderSettings() {
     const currentLanguage = localStorage.getItem('language') || 'ru';
     const currentTheme = localStorage.getItem('theme') || 'system'
@@ -12,7 +12,7 @@ export function renderSettings() {
             <div class='settings-list'>
                 <button id='userIdBtn' class='settings-item'>
                     <div class='icon'>
-                        <img src='/miniapp/components/icons/svg/user_id.svg'>
+                        <img src='/miniapp/img/icons/user_id.svg'>
                     </div>
                     <div class='content'>
                         <span class='title'>User ID</span>
@@ -23,7 +23,7 @@ export function renderSettings() {
                 </button>
                 <div id='subscriptionInfo' class='settings-item'>
                     <div class='icon'>
-                        <img src='/miniapp/components/icons/svg/star.svg'>
+                        <img src='/miniapp/img/icons/star.svg'>
                     </div>
                     <div class='content'>
                         <span class='title'>
@@ -41,7 +41,7 @@ export function renderSettings() {
             <div class='settings-list'>
                 <button id='languageToggleButton' class='settings-item'>
                     <div class='icon'>
-                        <img src='/miniapp/components/icons/svg/language.svg'>
+                        <img src='/miniapp/img/icons/language.svg'>
                     </div>
                     <div class='content'>
                         <span id='textSystemLanguage' class='title'>
@@ -55,7 +55,7 @@ export function renderSettings() {
                 </button>
                 <button id='themeToggleButton' class='settings-item'>
                     <div class='icon'>
-                        <img src='/miniapp/components/icons/svg/theme.svg'>
+                        <img src='/miniapp/img/icons/theme.svg'>
                     </div>
                     <div class='content'>
                         <span id='textTheme' class='title'>
@@ -71,7 +71,7 @@ export function renderSettings() {
             <div class='settings-list'>
                 <button id='contact_admin' class='settings-item'>
                     <div class='icon'>
-                        <img src='/miniapp/components/icons/svg/support.svg'>
+                        <img src='/miniapp/img/icons/support.svg'>
                     </div>
                     <div class='content'>
                         <span id='textContactAdmin' class='title'>

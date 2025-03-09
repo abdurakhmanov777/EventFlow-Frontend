@@ -17,7 +17,7 @@ export function renderTheme() {
                         <span id='textThemeSystem'>${localData.settings.theme.system}</span>
                     </div>
                     <i class='checkmark'>
-                        <img src='/miniapp/components/icons/svg/chekmark.svg'>
+                        <img src='/miniapp/img/icons/chekmark.svg'>
                     </i>
                 </label>
                 <label class='settings-option'>
@@ -26,7 +26,7 @@ export function renderTheme() {
                         <span id='textThemeDark'>${localData.settings.theme.dark}</span>
                     </div>
                     <i class='checkmark'>
-                        <img src='/miniapp/components/icons/svg/chekmark.svg'>
+                        <img src='/miniapp/img/icons/chekmark.svg'>
                     </i>
                 </label>
                 <label class='settings-option'>
@@ -35,7 +35,7 @@ export function renderTheme() {
                         <span id='textThemeLight'>${localData.settings.theme.light}</span>
                     </div>
                     <i class='checkmark'>
-                        <img src='/miniapp/components/icons/svg/chekmark.svg'>
+                        <img src='/miniapp/img/icons/chekmark.svg'>
                     </i>
                 </label>
             </div>

@@ -36,7 +36,7 @@ async function updateHeader(data) {
 
 
 async function fetchLocalization(language) {
-    const response = await fetch(`./components/lang/${language}.json`);
+    const response = await fetch(`./lang/${language}.json`);
     if (!response.ok) throw new Error(`Ошибка HTTP: ${response.status}`);
     return response.json();
 }

@@ -1,4 +1,4 @@
-import { initLocalization } from './localization.js';
+import { initLocalization } from '../utils/localization.js';
 import { renderBotForm } from './pages/botForm/botForm.js';
 import { renderBotList } from './pages/botList/botList.js';
 import { renderMain } from './pages/main/main.js';
