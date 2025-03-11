@@ -11,7 +11,7 @@ export function renderSettings() {
             <div class='settings-list'>
                 <button id='accountBtn' class='settings-item'>
                     <div class='icon'>
-                        <img src='/miniapp/img/icons/user_id.svg'>
+                        <img src='/miniapp/img/icons/user_id.svg' loading="eager">
                     </div>
                     <div class='content'>
                         <span class='title'>
