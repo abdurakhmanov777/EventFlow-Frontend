@@ -1,8 +1,27 @@
 import { switchView } from '../../init.js';
 import { arrow } from '../../../img/icons.js';
-export function renderSettings() {
+
+const icons = {
+    account: '/miniapp/img/icons/account.svg',
+    star: '/miniapp/img/icons/star.svg',
+    language: '/miniapp/img/icons/language.svg',
+    theme: '/miniapp/img/icons/theme.svg',
+    support: '/miniapp/img/icons/support.svg'
+};
+
+function preloadImages(icons) {
+    return Promise.all(Object.values(icons).map(src => new Promise(resolve => {
+        const img = new Image();
+        img.src = src;
+        img.onload = img.onerror = resolve;
+    })));
+}
+
+export async function renderSettings() {
+    await preloadImages(icons);
+
     const currentLanguage = localStorage.getItem('language') || 'ru';
-    const currentTheme = localStorage.getItem('theme') || 'system'
+    const currentTheme = localStorage.getItem('theme') || 'system';
     const localData = JSON.parse(sessionStorage.getItem(`lang_${currentLanguage}`));
 
     document.querySelector('#root').innerHTML = '';
@@ -11,7 +30,7 @@ export function renderSettings() {
             <div class='settings-list'>
                 <button id='accountBtn' class='settings-item'>
                     <div class='icon'>
-                        <img src='/miniapp/img/icons/user_id.svg' loading="eager">
+                        <img src='${icons.account}'>
                     </div>
                     <div class='content'>
                         <span class='title'>
@@ -25,7 +44,7 @@ export function renderSettings() {
                 </button>
                 <div id='subscriptionInfo' class='settings-item'>
                     <div class='icon'>
-                        <img src='/miniapp/img/icons/star.svg'>
+                        <img src='${icons.star}'>
                     </div>
                     <div class='content'>
                         <span class='title'>
@@ -43,7 +62,7 @@ export function renderSettings() {
             <div class='settings-list'>
                 <button id='languageToggleButton' class='settings-item'>
                     <div class='icon'>
-                        <img src='/miniapp/img/icons/language.svg'>
+                        <img src='${icons.language}'>
                     </div>
                     <div class='content'>
                         <span id='textSystemLanguage' class='title'>
@@ -57,7 +76,7 @@ export function renderSettings() {
                 </button>
                 <button id='themeToggleButton' class='settings-item'>
                     <div class='icon'>
-                        <img src='/miniapp/img/icons/theme.svg'>
+                        <img src='${icons.theme}'>
                     </div>
                     <div class='content'>
                         <span id='textTheme' class='title'>
@@ -73,7 +92,7 @@ export function renderSettings() {
             <div class='settings-list'>
                 <button id='contact_admin' class='settings-item'>
                     <div class='icon'>
-                        <img src='/miniapp/img/icons/support.svg'>
+                        <img src='${icons.support}'>
                     </div>
                     <div class='content'>
                         <span id='textContactAdmin' class='title'>
@@ -88,6 +107,7 @@ export function renderSettings() {
             </div>
         </div>
     `);
+
     document.getElementById('languageToggleButton').addEventListener('click', () => {
         switchView('language');
     });
@@ -103,14 +123,4 @@ export function renderSettings() {
     document.getElementById('accountBtn').addEventListener('click', () => {
         switchView('account');
     });
-
-    // document.getElementById('userIdBtn').addEventListener('click', () => {
-    //     const message = localData?.settings.account.copyUserId;
-    //     navigator.clipboard.writeText(userId)
-    //         .then(() => window?.Telegram.WebApp.showAlert(message));
-    // });
-
-    // document.getElementById('myBotsButton').addEventListener('click', () => {
-    //     switchView('botList');
-    // });
 }
