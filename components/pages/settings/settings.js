@@ -4,7 +4,6 @@ export function renderSettings() {
     const currentLanguage = localStorage.getItem('language') || 'ru';
     const currentTheme = localStorage.getItem('theme') || 'system'
     const localData = JSON.parse(sessionStorage.getItem(`lang_${currentLanguage}`));
-    const userId = window?.Telegram?.WebApp?.initDataUnsafe?.user?.id || 'unknown';
 
     document.querySelector('#root').innerHTML = '';
     document.querySelector('#root').insertAdjacentHTML('afterbegin', `
