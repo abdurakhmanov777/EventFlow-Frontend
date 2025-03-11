@@ -38,11 +38,24 @@ function render() {
     document.getElementById('topPanel').style.display = isMainView ? 'flex' : 'none';
 }
 
+function addAnimation() {
+    const pageElement = document.querySelector('.page');
+    pageElement.classList.remove('animate');
+    void pageElement.offsetWidth;
+    pageElement.classList.add('animate');
+}
+
 export async function initializeApp() {
     await initLocalization();
     switchView(currentView);
     initMenu();
     tg.BackButton.onClick(() => {
-        switchView(['account', 'language', 'theme'].includes(currentView) ? 'settings' : 'main');
+        if (['account', 'language', 'theme'].includes(currentView)) {
+            switchView('settings');
+            addAnimation();
+        } else {
+            switchView('main');
+        }
     });
+
 }

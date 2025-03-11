@@ -1,6 +1,14 @@
 import { switchView } from '../../init.js';
 import { arrow } from '../../../img/icons.js';
 
+function addAnimation() {
+    const pageElement = document.querySelector('.full-page');
+    pageElement.classList.remove('animate');
+    void pageElement.offsetWidth;
+    pageElement.classList.add('animate');
+}
+
+
 export function renderSettings() {
     const currentLanguage = localStorage.getItem('language') || 'ru';
     const currentTheme = localStorage.getItem('theme') || 'system'
@@ -91,9 +99,11 @@ export function renderSettings() {
     `);
     document.getElementById('languageToggleButton').addEventListener('click', () => {
         switchView('language');
+        addAnimation();
     });
     document.getElementById('themeToggleButton').addEventListener('click', () => {
         switchView('theme');
+        addAnimation();
     });
     document.getElementById('contact_admin').addEventListener('click', function() {
         window?.Telegram.WebApp.openTelegramLink('https://t.me/abdurakhmanov777');
@@ -102,7 +112,9 @@ export function renderSettings() {
         switchView('subscription');
     });
     document.getElementById('accountBtn').addEventListener('click', () => {
+        // addAnimation();
         switchView('account');
+        addAnimation();
     });
 
     // document.getElementById('userIdBtn').addEventListener('click', () => {
