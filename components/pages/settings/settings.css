@@ -83,7 +83,7 @@
 }
 
 .settings-option .checkmark {
-    background-image: url('/miniapp/img/icons/chekmark.svg');
+    background-image: url('/img/icons/chekmark.svg');
     background-size: contain;
     width: 20px;
     height: 20px;

@@ -16,9 +16,7 @@ export function renderLanguage() {
                         <span>English</span>
                         <small>English</small>
                     </div>
-                    <i class='checkmark'>
-                        <img src='/miniapp/img/icons/chekmark.svg'>
-                    </i>
+                    <i class='checkmark'></i>
                 </label>
                 <label class='settings-option'>
                     <input type='radio' name='language' value='ru'>
@@ -26,9 +24,7 @@ export function renderLanguage() {
                         <span>Russian</span>
                         <small>Русский</small>
                     </div>
-                    <i class='checkmark'>
-                        <img src='/miniapp/img/icons/chekmark.svg'>
-                    </i>
+                    <i class='checkmark'></i>
                 </label>
             </div>
         </div>
@@ -52,8 +48,9 @@ export function renderLanguage() {
 
     languageOptions.forEach(option =>
         option.addEventListener('change', e => {
-            editLocalization(e.target.value);
-            updateLanguageSelection(e.target.value);
+            editLocalization(e.target.value).then(() => {
+                return updateLanguageSelection(e.target.value);
+            });
         })
     );
     async function updateLanguageSelection(language) {

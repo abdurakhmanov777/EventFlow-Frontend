@@ -16,18 +16,14 @@ export function renderTheme() {
                     <div class='text'>
                         <span id='textThemeSystem'>${localData.settings.theme.system}</span>
                     </div>
-                    <i class='checkmark'>
-                        <img src='/miniapp/img/icons/chekmark.svg'>
-                    </i>
+                    <i class='checkmark'></i>
                 </label>
                 <label class='settings-option'>
                     <input type='radio' name='theme' value='dark'>
                     <div class='text'>
                         <span id='textThemeDark'>${localData.settings.theme.dark}</span>
                     </div>
-                    <i class='checkmark'>
-                        <img src='/miniapp/img/icons/chekmark.svg'>
-                    </i>
+                    <i class='checkmark'></i>
                 </label>
                 <label class='settings-option'>
                     <input type='radio' name='theme' value='light'>
@@ -35,7 +31,6 @@ export function renderTheme() {
                         <span id='textThemeLight'>${localData.settings.theme.light}</span>
                     </div>
                     <i class='checkmark'>
-                        <img src='/miniapp/img/icons/chekmark.svg'>
                     </i>
                 </label>
             </div>
