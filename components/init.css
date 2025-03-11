@@ -70,10 +70,11 @@ body, #root {
 .page {
     height: calc(100% - 80px);
     margin-top: 60px;
-    /* background-color: blue; */
+    background-color: blue;
 }
 
 .full-page {
     height: calc(100% - 40px);
     margin-top: 20px;
+    background-color: red;
 }

@@ -1,27 +1,9 @@
 import { switchView } from '../../init.js';
 import { arrow } from '../../../img/icons.js';
 
-const icons = {
-    account: '/miniapp/img/icons/account.svg',
-    star: '/miniapp/img/icons/star.svg',
-    language: '/miniapp/img/icons/language.svg',
-    theme: '/miniapp/img/icons/theme.svg',
-    support: '/miniapp/img/icons/support.svg'
-};
-
-function preloadImages(icons) {
-    return Promise.all(Object.values(icons).map(src => new Promise(resolve => {
-        const img = new Image();
-        img.src = src;
-        img.onload = img.onerror = resolve;
-    })));
-}
-
-export async function renderSettings() {
-    await preloadImages(icons);
-
+export function renderSettings() {
     const currentLanguage = localStorage.getItem('language') || 'ru';
-    const currentTheme = localStorage.getItem('theme') || 'system';
+    const currentTheme = localStorage.getItem('theme') || 'system'
     const localData = JSON.parse(sessionStorage.getItem(`lang_${currentLanguage}`));
 
     document.querySelector('#root').innerHTML = '';
@@ -30,7 +12,7 @@ export async function renderSettings() {
             <div class='settings-list'>
                 <button id='accountBtn' class='settings-item'>
                     <div class='icon'>
-                        <img src='${icons.account}'>
+                        <img src='/miniapp/img/icons/account.svg'>
                     </div>
                     <div class='content'>
                         <span class='title'>
@@ -44,7 +26,7 @@ export async function renderSettings() {
                 </button>
                 <div id='subscriptionInfo' class='settings-item'>
                     <div class='icon'>
-                        <img src='${icons.star}'>
+                        <img src='/miniapp/img/icons/star.svg'>
                     </div>
                     <div class='content'>
                         <span class='title'>
@@ -62,7 +44,7 @@ export async function renderSettings() {
             <div class='settings-list'>
                 <button id='languageToggleButton' class='settings-item'>
                     <div class='icon'>
-                        <img src='${icons.language}'>
+                        <img src='/miniapp/img/icons/language.svg'>
                     </div>
                     <div class='content'>
                         <span id='textSystemLanguage' class='title'>
@@ -76,7 +58,7 @@ export async function renderSettings() {
                 </button>
                 <button id='themeToggleButton' class='settings-item'>
                     <div class='icon'>
-                        <img src='${icons.theme}'>
+                        <img src='/miniapp/img/icons/theme.svg'>
                     </div>
                     <div class='content'>
                         <span id='textTheme' class='title'>
@@ -92,7 +74,7 @@ export async function renderSettings() {
             <div class='settings-list'>
                 <button id='contact_admin' class='settings-item'>
                     <div class='icon'>
-                        <img src='${icons.support}'>
+                        <img src='/miniapp/img/icons/support.svg'>
                     </div>
                     <div class='content'>
                         <span id='textContactAdmin' class='title'>
@@ -107,7 +89,6 @@ export async function renderSettings() {
             </div>
         </div>
     `);
-
     document.getElementById('languageToggleButton').addEventListener('click', () => {
         switchView('language');
     });
@@ -123,4 +104,14 @@ export async function renderSettings() {
     document.getElementById('accountBtn').addEventListener('click', () => {
         switchView('account');
     });
+
+    // document.getElementById('userIdBtn').addEventListener('click', () => {
+    //     const message = localData?.settings.account.copyUserId;
+    //     navigator.clipboard.writeText(userId)
+    //         .then(() => window?.Telegram.WebApp.showAlert(message));
+    // });
+
+    // document.getElementById('myBotsButton').addEventListener('click', () => {
+    //     switchView('botList');
+    // });
 }
