@@ -9,7 +9,7 @@ export function renderTheme() {
     document.querySelector('#root').innerHTML = '';
     document.querySelector('#root').insertAdjacentHTML('afterbegin', `
         <div id='themeSection' class='full-page'>
-            <h3>${localData.settings.theme.name}</h3>
+            <h4>${localData.settings.theme.name}</h4>
             <div class='settings-list'>
                 <label class='settings-option'>
                     <input type='radio' name='theme' value='system'>

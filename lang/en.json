@@ -12,7 +12,11 @@
     },
 
     "settings" : {
-        "copyUserId": "Your ID has been copied",
+        "account": {
+            "name": "Account",
+            "settings": "Settings",
+            "copyUserId": "Your ID has been copied"
+        },
         "subscription": {
             "name": "Subscription",
             "value": "Free",

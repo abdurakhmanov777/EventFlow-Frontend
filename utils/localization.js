@@ -31,7 +31,7 @@ async function updateLocalization(data) {
 }
 
 async function updateHeader(data) {
-    document.querySelector('h2').textContent = data.settings.language.name;
+    document.querySelector('h3').textContent = data.settings.language.name;
 }
 
 

@@ -7,6 +7,7 @@ import { renderSettings } from './pages/settings/settings.js';
 import { renderLanguage } from './pages/language/language.js';
 import { renderTheme } from './pages/theme/theme.js';
 import { initMenu, updateActiveButton, sidebar_passive } from './sidebar/sidebar.js';
+import { renderAccount } from './pages/account/account.js';
 
 const tg = window.Telegram?.WebApp;
 let currentView = sessionStorage.getItem('page') || 'main';
@@ -19,6 +20,7 @@ const renderers = {
     settings: renderSettings,
     language: renderLanguage,
     theme: renderTheme,
+    account: renderAccount,
 };
 
 export function switchView(view) {
@@ -41,6 +43,6 @@ export async function initializeApp() {
     switchView(currentView);
     initMenu();
     tg.BackButton.onClick(() => {
-        switchView(['language', 'theme'].includes(currentView) ? 'settings' : 'main');
+        switchView(['account', 'language', 'theme'].includes(currentView) ? 'settings' : 'main');
     });
 }

@@ -107,7 +107,7 @@
     display: block;
 }
 
-h2, h3 {
+h2, h3, h4 {
     text-transform: uppercase;
     align-self: flex-start;
     font-size: 14px;

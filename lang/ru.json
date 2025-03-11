@@ -12,7 +12,11 @@
     },
 
     "settings" : {
-        "copyUserId": "Ваш ID скопирован",
+        "account": {
+            "name": "Аккаунт",
+            "settings": "Настройки",
+            "copyUserId": "Your ID has been copied"
+        },
         "subscription": {
             "name": "Подписка",
             "value": "Бесплатная",

@@ -1,5 +1,5 @@
 import { switchView } from '../../init.js';
-import { arrow } from '../../icons.js';
+import { arrow } from '../../../img/icons.js';
 export function renderSettings() {
     const currentLanguage = localStorage.getItem('language') || 'ru';
     const currentTheme = localStorage.getItem('theme') || 'system'
@@ -10,14 +10,17 @@ export function renderSettings() {
     document.querySelector('#root').insertAdjacentHTML('afterbegin', `
         <div id='settingsSection' class='page'>
             <div class='settings-list'>
-                <button id='userIdBtn' class='settings-item'>
+                <button id='accountBtn' class='settings-item'>
                     <div class='icon'>
                         <img src='/miniapp/img/icons/user_id.svg'>
                     </div>
                     <div class='content'>
-                        <span class='title'>User ID</span>
-                        <span id='userIdValue' class='value'>
-                            ${userId}
+                        <span class='title'>
+                            ${localData.settings.account.name}
+                        </span>
+                        <span class='value'>
+                            ${localData.settings.account.settings}
+                            ${arrow}
                         </span>
                     </div>
                 </button>
@@ -47,7 +50,7 @@ export function renderSettings() {
                         <span id='textSystemLanguage' class='title'>
                             ${localData?.settings.language.name}
                         </span>
-                        <span id='textValueLanguage' class='value'>
+                        <span class='value'>
                             ${localData?.settings.language.value}
                             ${arrow}
                         </span>
@@ -61,7 +64,7 @@ export function renderSettings() {
                         <span id='textTheme' class='title'>
                             ${localData?.settings.theme.name}
                         </span>
-                        <span id='textValueTheme' class='value'>
+                        <span class='value'>
                             ${localData.settings.theme?.[`${currentTheme}`]}
                             ${arrow}
                         </span>
@@ -77,7 +80,7 @@ export function renderSettings() {
                         <span id='textContactAdmin' class='title'>
                             ${localData?.settings.support.name}
                         </span>
-                        <span id='textContactAdminValue' class='value'>
+                        <span class='value'>
                             ${localData?.settings.support.value}
                             ${arrow}
                         </span>
@@ -98,11 +101,16 @@ export function renderSettings() {
     document.getElementById('settingsSubscriptionBtn').addEventListener('click', () => {
         switchView('subscription');
     });
-    document.getElementById('userIdBtn').addEventListener('click', () => {
-        const message = localData?.settings.copyUserId;
-        navigator.clipboard.writeText(userId)
-            .then(() => window?.Telegram.WebApp.showAlert(message));
+    document.getElementById('accountBtn').addEventListener('click', () => {
+        switchView('account');
     });
+
+    // document.getElementById('userIdBtn').addEventListener('click', () => {
+    //     const message = localData?.settings.account.copyUserId;
+    //     navigator.clipboard.writeText(userId)
+    //         .then(() => window?.Telegram.WebApp.showAlert(message));
+    // });
+
     // document.getElementById('myBotsButton').addEventListener('click', () => {
     //     switchView('botList');
     // });
