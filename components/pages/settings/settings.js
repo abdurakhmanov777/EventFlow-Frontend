@@ -1,12 +1,13 @@
 import { switchView } from '../../init.js';
 import { arrow } from '../../../img/icons.js';
+import { addAnimation } from '../../../utils/animations.js';
 
-function addAnimation() {
-    const pageElement = document.querySelector('.full-page');
-    pageElement.classList.remove('animate');
-    void pageElement.offsetWidth;
-    pageElement.classList.add('animate');
-}
+// function addAnimation() {
+//     const pageElement = document.querySelector('.full-page');
+//     pageElement.classList.remove('animate');
+//     void pageElement.offsetWidth;
+//     pageElement.classList.add('animate');
+// }
 
 
 export function renderSettings() {
@@ -99,11 +100,11 @@ export function renderSettings() {
     `);
     document.getElementById('languageToggleButton').addEventListener('click', () => {
         switchView('language');
-        addAnimation();
+        addAnimation('.full-page');
     });
     document.getElementById('themeToggleButton').addEventListener('click', () => {
         switchView('theme');
-        addAnimation();
+        addAnimation('.full-page');
     });
     document.getElementById('contact_admin').addEventListener('click', function() {
         window?.Telegram.WebApp.openTelegramLink('https://t.me/abdurakhmanov777');
@@ -114,7 +115,7 @@ export function renderSettings() {
     document.getElementById('accountBtn').addEventListener('click', () => {
         // addAnimation();
         switchView('account');
-        addAnimation();
+        addAnimation('.full-page');
     });
 
     // document.getElementById('userIdBtn').addEventListener('click', () => {

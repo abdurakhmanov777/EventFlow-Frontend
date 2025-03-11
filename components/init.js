@@ -8,6 +8,7 @@ import { renderLanguage } from './pages/language/language.js';
 import { renderTheme } from './pages/theme/theme.js';
 import { initMenu, updateActiveButton, sidebar_passive } from './sidebar/sidebar.js';
 import { renderAccount } from './pages/account/account.js';
+import { addAnimation } from '../utils/animations.js';
 
 const tg = window.Telegram?.WebApp;
 let currentView = sessionStorage.getItem('page') || 'main';
@@ -38,13 +39,6 @@ function render() {
     document.getElementById('topPanel').style.display = isMainView ? 'flex' : 'none';
 }
 
-function addAnimation() {
-    const pageElement = document.querySelector('.page');
-    pageElement.classList.remove('animate');
-    void pageElement.offsetWidth;
-    pageElement.classList.add('animate');
-}
-
 export async function initializeApp() {
     await initLocalization();
     switchView(currentView);
@@ -52,7 +46,7 @@ export async function initializeApp() {
     tg.BackButton.onClick(() => {
         if (['account', 'language', 'theme'].includes(currentView)) {
             switchView('settings');
-            addAnimation();
+            addAnimation('.page');
         } else {
             switchView('main');
         }
