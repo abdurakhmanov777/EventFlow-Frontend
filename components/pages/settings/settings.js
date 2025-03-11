@@ -2,14 +2,6 @@ import { switchView } from '../../init.js';
 import { arrow } from '../../../img/icons.js';
 import { addAnimation } from '../../../utils/animations.js';
 
-// function addAnimation() {
-//     const pageElement = document.querySelector('.full-page');
-//     pageElement.classList.remove('animate');
-//     void pageElement.offsetWidth;
-//     pageElement.classList.add('animate');
-// }
-
-
 export function renderSettings() {
     const currentLanguage = localStorage.getItem('language') || 'ru';
     const currentTheme = localStorage.getItem('theme') || 'system'
