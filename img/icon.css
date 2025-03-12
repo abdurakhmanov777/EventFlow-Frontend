@@ -11,25 +11,25 @@
 }
 
 #star-icon {
-    background-image: url('/img/icons/star.svg');
+    background-image: url('./icons/star.svg');
     width: 24px;
     height: 24px;
 }
 
 #theme-icon {
-    background-image: url('/img/icons/theme.svg');
+    background-image: url('./icons/theme.svg');
     width: 24px;
     height: 24px;
 }
 
 #account-icon {
-    background-image: url('/img/icons/account.svg');
+    background-image: url('./icons/account.svg');
     width: 24px;
     height: 24px;
 }
 
 #support-icon {
-    background-image: url('/img/icons/support.svg');
+    background-image: url('./icons/support.svg');
     width: 24px;
     height: 24px;
 }
