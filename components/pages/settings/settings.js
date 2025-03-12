@@ -13,7 +13,7 @@ export function renderSettings() {
             <div class='settings-list'>
                 <button id='accountBtn' class='settings-item'>
                     <div class='icon'>
-                        <img src='/miniapp/img/icons/account.svg'>
+                        ${icon_account}
                     </div>
                     <div class='content'>
                         <span class='title'>

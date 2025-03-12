@@ -73,7 +73,7 @@
 
 .value, .text small {
     font-size: 14px;
-    /* font-weight: bold; */
+    font-weight: normal;
     color: var(--tg-theme-subtitle-text-color);
 }
 
