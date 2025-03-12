@@ -10,7 +10,7 @@ import { initMenu, updateActiveButton, sidebar_passive } from './sidebar/sidebar
 import { renderAccount } from './pages/account/account.js';
 import { addAnimation } from '../utils/animations.js';
 
-const tg = window.Telegram?.WebApp;
+const tg = Telegram?.WebApp;
 let currentView = sessionStorage.getItem('page') || 'main';
 
 const renderers = {
@@ -51,5 +51,4 @@ export async function initializeApp() {
             switchView('main');
         }
     });
-
 }

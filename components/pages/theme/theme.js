@@ -78,10 +78,24 @@ export function renderTheme() {
 
 
 async function loadTheme(theme) {
-    try {
-        localStorage.setItem('theme', theme);
-        // document.body.className = `theme-${theme}`;
-    } catch (error) {
-        console.error('Ошибка загрузки темы:', error);
-    }
+    localStorage.setItem('theme', theme);
+    // if (theme === "system") {
+    //     const section_bg_color = tg.themeParams.section_bg_color || "#ffffff";
+    //     tg.setHeaderColor(section_bg_color);
+    //     // Telegram.WebApp.showAlert(section_bg_color)
+    //     tg.setBackgroundColor(section_bg_color);
+    // } else if (theme === "dark") {
+    //     tg.setHeaderColor("#000000");
+    //     tg.setBackgroundColor("#000000");
+    // } else if (theme === "light") {
+    //     tg.setHeaderColor("#ffffff");
+    //     tg.setBackgroundColor("#ffffff");
+    // } else {
+    //     console.warn("Неизвестная тема:", theme);
+    // }
+}
+
+export async function initTheme() {
+    const theme = localStorage.getItem('theme') || 'system';
+    await loadTheme(theme);
 }
