@@ -1,4 +1,5 @@
 // import { switchView } from '../index.js';
+import { icon_checkmark } from '../../../img/icons.js';
 
 export function renderTheme() {
     let theme = localStorage.getItem('theme') || 'system';
@@ -15,21 +16,27 @@ export function renderTheme() {
                     <div class='text'>
                         <span id='textThemeSystem'>${localData.settings.theme.system}</span>
                     </div>
-                    <i class='checkmark'></i>
+                    <i class='checkmark'>
+                        ${icon_checkmark}
+                    </i>
                 </label>
                 <label class='settings-option'>
                     <input type='radio' name='theme' value='dark'>
                     <div class='text'>
                         <span id='textThemeDark'>${localData.settings.theme.dark}</span>
                     </div>
-                    <i class='checkmark'></i>
+                    <i class='checkmark'>
+                        ${icon_checkmark}
+                    </i>
                 </label>
                 <label class='settings-option'>
                     <input type='radio' name='theme' value='light'>
                     <div class='text'>
                         <span id='textThemeLight'>${localData.settings.theme.light}</span>
                     </div>
-                    <i class='checkmark'></i>
+                    <i class='checkmark'>
+                        ${icon_checkmark}
+                    </i>
                 </label>
             </div>
         </div>

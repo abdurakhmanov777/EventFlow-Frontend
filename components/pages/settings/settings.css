@@ -83,7 +83,7 @@
 }
 
 .settings-option .checkmark {
-    background-image: url('../../../img/icons/chekmark.svg');
+    /* background-image: url('../../../img/icons/chekmark.svg'); */
     width: 23px;
     height: 23px;
     align-items: center;

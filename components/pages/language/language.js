@@ -1,4 +1,5 @@
 // import { switchView } from '../../index.js';
+import { icon_checkmark } from '../../../img/icons.js';
 import { editLocalization } from '../../../utils/localization.js';
 
 export function renderLanguage() {
@@ -16,7 +17,9 @@ export function renderLanguage() {
                         <span>English</span>
                         <small>English</small>
                     </div>
-                    <i class='checkmark'></i>
+                    <i class='checkmark'>
+                        ${icon_checkmark}
+                    </i>
                 </label>
                 <label class='settings-option'>
                     <input type='radio' name='language' value='ru'>
@@ -24,7 +27,9 @@ export function renderLanguage() {
                         <span>Russian</span>
                         <small>Русский</small>
                     </div>
-                    <i class='checkmark'></i>
+                    <i class='checkmark'>
+                        ${icon_checkmark}
+                    </i>
                 </label>
             </div>
         </div>
