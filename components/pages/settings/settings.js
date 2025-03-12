@@ -1,13 +1,11 @@
 import { switchView } from '../../init.js';
-import { arrow, account } from '../../../img/icons.js';
+import { icon_arrow, icon_account, icon_language, icon_theme, icon_support, icon_star } from '../../../img/icons.js';
 import { addAnimation } from '../../../utils/animations.js';
 
 export function renderSettings() {
     const lang = localStorage.getItem('language') || 'ru';
     const theme = localStorage.getItem('theme') || 'system'
     const localData = JSON.parse(sessionStorage.getItem(`lang_${lang}`));
-    // const iconPath = '/miniapp/img/icons/';
-    const iconPath = '../../../img/icons/'
 
     document.querySelector('#root').innerHTML = '';
     document.querySelector('#root').insertAdjacentHTML('afterbegin', `
@@ -15,7 +13,7 @@ export function renderSettings() {
             <div class='settings-list'>
                 <button id='accountBtn' class='settings-item'>
                     <div class='icon'>
-                        ${account}
+                        ${icon_account}
                     </div>
                     <div class='content'>
                         <span class='title'>
@@ -23,13 +21,13 @@ export function renderSettings() {
                         </span>
                         <span class='value'>
                             ${localData.settings.account.settings}
-                            ${arrow}
+                            ${icon_arrow}
                         </span>
                     </div>
                 </button>
                 <div id='subscriptionInfo' class='settings-item'>
                     <div class='icon'>
-                        <div id='settings-icon'></div>
+                        ${icon_star}
                     </div>
                     <div class='content'>
                         <span class='title'>
@@ -47,7 +45,7 @@ export function renderSettings() {
             <div class='settings-list'>
                 <button id='languageToggleButton' class='settings-item'>
                     <div class='icon'>
-                        <div id='language-icon'></div>
+                        ${icon_language}
                     </div>
                     <div class='content'>
                         <span id='textSystemLanguage' class='title'>
@@ -55,13 +53,13 @@ export function renderSettings() {
                         </span>
                         <span class='value'>
                             ${localData?.settings.language.value}
-                            ${arrow}
+                            ${icon_arrow}
                         </span>
                     </div>
                 </button>
                 <button id='themeToggleButton' class='settings-item'>
                     <div class='icon'>
-                        <img src='${iconPath}theme.svg'>
+                        ${icon_theme}
                     </div>
                     <div class='content'>
                         <span id='textTheme' class='title'>
@@ -69,7 +67,7 @@ export function renderSettings() {
                         </span>
                         <span class='value'>
                             ${localData.settings.theme?.[`${theme}`]}
-                            ${arrow}
+                            ${icon_arrow}
                         </span>
                     </div>
                 </button>
@@ -77,7 +75,7 @@ export function renderSettings() {
             <div class='settings-list'>
                 <button id='contact_admin' class='settings-item'>
                     <div class='icon'>
-                        <img src='${iconPath}support.svg'>
+                        ${icon_support}
                     </div>
                     <div class='content'>
                         <span id='textContactAdmin' class='title'>
@@ -85,7 +83,7 @@ export function renderSettings() {
                         </span>
                         <span class='value'>
                             ${localData?.settings.support.value}
-                            ${arrow}
+                            ${icon_arrow}
                         </span>
                     </div>
                 </button>

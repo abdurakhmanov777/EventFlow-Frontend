@@ -1,12 +1,10 @@
 // import { switchView } from '../../init.js';
-import { copy } from '../../../img/icons.js';
+import { icon_copy, icon_id } from '../../../img/icons.js';
 
 export function renderAccount() {
     const lang = localStorage.getItem('language') || 'ru';
     const localData = JSON.parse(sessionStorage.getItem(`lang_${lang}`));
     const userId = window?.Telegram?.WebApp?.initDataUnsafe?.user?.id || 'unknown';
-    // const iconPath = '/miniapp/img/icons/';
-    const iconPath = '../../../img/icons/';
 
     document.querySelector('#root').innerHTML = '';
     document.querySelector('#root').insertAdjacentHTML('afterbegin', `
@@ -15,7 +13,7 @@ export function renderAccount() {
             <div class='settings-list'>
                 <button id='userIdBtn' class='settings-item'>
                     <div class='icon'>
-                        <img src='${iconPath}id.svg'>
+                        ${icon_id}
                     </div>
                     <div class='content'>
                         <span class='title'>
@@ -23,7 +21,7 @@ export function renderAccount() {
                         </span>
                         <span class='value'>
                             ${userId}
-                            ${copy}
+                            ${icon_copy}
                         </span>
                     </div>
                 </button>
@@ -37,8 +35,3 @@ export function renderAccount() {
             .then(() => window?.Telegram.WebApp.showAlert(message));
     });
 }
-
-
-// <div class='icon'>
-//     <img src='${iconPath}user_id.svg'>
-// </div>
