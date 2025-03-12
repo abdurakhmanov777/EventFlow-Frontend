@@ -2,8 +2,8 @@
 import { editLocalization } from '../../../utils/localization.js';
 
 export function renderLanguage() {
-    let currentLanguage = localStorage.getItem('language') || 'ru';
-    let localData = JSON.parse(sessionStorage.getItem(`lang_${currentLanguage}`));
+    let lang = localStorage.getItem('language') || 'ru';
+    let localData = JSON.parse(sessionStorage.getItem(`lang_${lang}`));
 
     document.querySelector('#root').innerHTML = '';
     document.querySelector('#root').insertAdjacentHTML('afterbegin', `
@@ -29,7 +29,7 @@ export function renderLanguage() {
             </div>
         </div>
     `);
-    updateLanguageSelection(currentLanguage);
+    updateLanguageSelection(lang);
     // document.getElementById('createBotButton').addEventListener('click', () => {
     //     switchView('botForm');
     // });

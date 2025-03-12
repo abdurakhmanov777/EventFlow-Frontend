@@ -1,11 +1,13 @@
 import { switchView } from '../../init.js';
-import { arrow } from '../../../img/icons.js';
+import { arrow, account } from '../../../img/icons.js';
 import { addAnimation } from '../../../utils/animations.js';
 
 export function renderSettings() {
-    const currentLanguage = localStorage.getItem('language') || 'ru';
-    const currentTheme = localStorage.getItem('theme') || 'system'
-    const localData = JSON.parse(sessionStorage.getItem(`lang_${currentLanguage}`));
+    const lang = localStorage.getItem('language') || 'ru';
+    const theme = localStorage.getItem('theme') || 'system'
+    const localData = JSON.parse(sessionStorage.getItem(`lang_${lang}`));
+    // const iconPath = '/miniapp/img/icons/';
+    const iconPath = '../../../img/icons/'
 
     document.querySelector('#root').innerHTML = '';
     document.querySelector('#root').insertAdjacentHTML('afterbegin', `
@@ -13,7 +15,7 @@ export function renderSettings() {
             <div class='settings-list'>
                 <button id='accountBtn' class='settings-item'>
                     <div class='icon'>
-                        <img src='/miniapp/img/icons/account.svg'>
+                        ${account}
                     </div>
                     <div class='content'>
                         <span class='title'>
@@ -27,7 +29,7 @@ export function renderSettings() {
                 </button>
                 <div id='subscriptionInfo' class='settings-item'>
                     <div class='icon'>
-                        <img src='/miniapp/img/icons/star.svg'>
+                        <div id='settings-icon'></div>
                     </div>
                     <div class='content'>
                         <span class='title'>
@@ -45,7 +47,7 @@ export function renderSettings() {
             <div class='settings-list'>
                 <button id='languageToggleButton' class='settings-item'>
                     <div class='icon'>
-                        <img src='/miniapp/img/icons/language.svg'>
+                        <div id='language-icon'></div>
                     </div>
                     <div class='content'>
                         <span id='textSystemLanguage' class='title'>
@@ -59,14 +61,14 @@ export function renderSettings() {
                 </button>
                 <button id='themeToggleButton' class='settings-item'>
                     <div class='icon'>
-                        <img src='/miniapp/img/icons/theme.svg'>
+                        <img src='${iconPath}theme.svg'>
                     </div>
                     <div class='content'>
                         <span id='textTheme' class='title'>
                             ${localData?.settings.theme.name}
                         </span>
                         <span class='value'>
-                            ${localData.settings.theme?.[`${currentTheme}`]}
+                            ${localData.settings.theme?.[`${theme}`]}
                             ${arrow}
                         </span>
                     </div>
@@ -75,7 +77,7 @@ export function renderSettings() {
             <div class='settings-list'>
                 <button id='contact_admin' class='settings-item'>
                     <div class='icon'>
-                        <img src='/miniapp/img/icons/support.svg'>
+                        <img src='${iconPath}support.svg'>
                     </div>
                     <div class='content'>
                         <span id='textContactAdmin' class='title'>

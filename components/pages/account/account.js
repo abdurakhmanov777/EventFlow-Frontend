@@ -2,9 +2,11 @@
 import { copy } from '../../../img/icons.js';
 
 export function renderAccount() {
-    const currentLanguage = localStorage.getItem('language') || 'ru';
-    const localData = JSON.parse(sessionStorage.getItem(`lang_${currentLanguage}`));
+    const lang = localStorage.getItem('language') || 'ru';
+    const localData = JSON.parse(sessionStorage.getItem(`lang_${lang}`));
     const userId = window?.Telegram?.WebApp?.initDataUnsafe?.user?.id || 'unknown';
+    // const iconPath = '/miniapp/img/icons/';
+    const iconPath = '../../../img/icons/';
 
     document.querySelector('#root').innerHTML = '';
     document.querySelector('#root').insertAdjacentHTML('afterbegin', `
@@ -13,7 +15,7 @@ export function renderAccount() {
             <div class='settings-list'>
                 <button id='userIdBtn' class='settings-item'>
                     <div class='icon'>
-                        <img src='/miniapp/img/icons/id.svg'>
+                        <img src='${iconPath}id.svg'>
                     </div>
                     <div class='content'>
                         <span class='title'>
@@ -38,5 +40,5 @@ export function renderAccount() {
 
 
 // <div class='icon'>
-//     <img src='/miniapp/img/icons/user_id.svg'>
+//     <img src='${iconPath}user_id.svg'>
 // </div>

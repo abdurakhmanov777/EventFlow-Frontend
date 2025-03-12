@@ -1,7 +1,7 @@
-export let currentLanguage = localStorage.getItem('language') || 'ru';
+export let lang = localStorage.getItem('language') || 'ru';
 
 export async function initLocalization() {
-    const data = await loadLocalization(currentLanguage);
+    const data = await loadLocalization(lang);
     await updateLocalization(data);
 }
 

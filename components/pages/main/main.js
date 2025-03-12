@@ -1,8 +1,8 @@
 import { switchView } from '../../init.js';
 
 export function renderMain() {
-    const currentLanguage = localStorage.getItem('language') || 'ru';
-    const localData = JSON.parse(sessionStorage.getItem(`lang_${currentLanguage}`));
+    const lang = localStorage.getItem('language') || 'ru';
+    const localData = JSON.parse(sessionStorage.getItem(`lang_${lang}`));
 
     document.querySelector('#root').innerHTML = '';
     document.querySelector('#root').insertAdjacentHTML('afterbegin', `

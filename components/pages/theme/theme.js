@@ -1,10 +1,9 @@
 // import { switchView } from '../index.js';
 
 export function renderTheme() {
-    let currentTheme = localStorage.getItem('theme') || 'system';
-
-    const currentLanguage = localStorage.getItem('language') || 'ru';
-    const localData = JSON.parse(sessionStorage.getItem(`lang_${currentLanguage}`));
+    let theme = localStorage.getItem('theme') || 'system';
+    const lang = localStorage.getItem('language') || 'ru';
+    const localData = JSON.parse(sessionStorage.getItem(`lang_${lang}`));
 
     document.querySelector('#root').innerHTML = '';
     document.querySelector('#root').insertAdjacentHTML('afterbegin', `
@@ -30,13 +29,12 @@ export function renderTheme() {
                     <div class='text'>
                         <span id='textThemeLight'>${localData.settings.theme.light}</span>
                     </div>
-                    <i class='checkmark'>
-                    </i>
+                    <i class='checkmark'></i>
                 </label>
             </div>
         </div>
     `);
-    updateThemeSelection(currentTheme);
+    updateThemeSelection(theme);
 
     function filterOptionsByName(name) {
         const options = document.querySelectorAll('.settings-option');
