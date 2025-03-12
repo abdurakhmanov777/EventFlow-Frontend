@@ -13,7 +13,7 @@ export function renderAccount() {
             <div class='settings-list'>
                 <button id='userIdBtn' class='settings-item'>
                     <div class='icon'>
-                        <img src='/miniapp/img/icons/account.svg'>
+                        <img src='/miniapp/img/icons/id.svg'>
                     </div>
                     <div class='content'>
                         <span class='title'>

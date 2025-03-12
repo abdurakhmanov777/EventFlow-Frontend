@@ -84,10 +84,12 @@
 
 .settings-option .checkmark {
     background-image: url('/miniapp/img/icons/chekmark.svg');
-    background-size: contain;
-    width: 20px;
-    height: 20px;
-    display: inline-block;
+    width: 23px;
+    height: 23px;
+    align-items: center;
+    justify-content: center;
+    margin-right: 12px;
+    flex-shrink: 0;
 }
 
 .text {
@@ -101,15 +103,6 @@
 }
 
 
-.checkmark {
-    width: 23px;
-    height: 23px;
-    align-items: center;
-    justify-content: center;
-    font-size: 18px;
-    margin-right: 12px;
-    flex-shrink: 0;
-}
 
 .settings-option input:checked ~ .checkmark {
     display: block;
