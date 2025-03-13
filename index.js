@@ -4,6 +4,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const tg = Telegram?.WebApp;
     tg.expand();
     tg.disableVerticalSwipes();
-    tg.enableClosingConfirmation();
+    // tg.enableClosingConfirmation();
     initializeApp();
 });
