@@ -36,7 +36,6 @@
     padding: 12px;
     margin-bottom: 20px;
     font-size: 16px;
-    font-weight: 500;
     color: var(--tg-theme-button-text-color);
 }
 
@@ -51,7 +50,6 @@
     height: var(--tg-viewport-height);
     /* height: 100vh; */
     font-size: 24px;
-    font-weight: 500;
     color: red;
     text-align: center;
 }
@@ -59,7 +57,6 @@
 .no-bots-message {
     text-align: center;
     font-size: 18px;
-    font-weight: 500;
     color: #777;
     padding: 20px;
     margin: 0;
