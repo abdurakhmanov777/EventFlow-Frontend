@@ -1,10 +1,9 @@
-// import { switchView } from '../../index.js';
-import { icon_checkmark } from '../../../utils/icons.js';
-import { editLocalization } from '../../../utils/localization.js';
+import { icon_checkmark } from "../../../img/icons.js";
+import { editLocalization } from "../../../utils/localization.js";
 
 export function renderLanguage() {
-    let lang = localStorage.getItem('language') || 'ru';
-    let data = JSON.parse(sessionStorage.getItem(`lang_${lang}`));
+    const lang = localStorage.getItem('language') || 'ru';
+    const data = JSON.parse(sessionStorage.getItem(`lang_${lang}`));
 
     document.querySelector('#root').innerHTML = '';
     document.querySelector('#root').insertAdjacentHTML('afterbegin', `

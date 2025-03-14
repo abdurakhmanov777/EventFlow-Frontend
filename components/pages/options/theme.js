@@ -1,5 +1,4 @@
-// import { switchView } from '../index.js';
-import { icon_checkmark } from '../../../utils/icons.js';
+import { icon_checkmark } from "../../../img/icons.js";
 
 export function renderTheme() {
     let theme = localStorage.getItem('theme') || 'system';

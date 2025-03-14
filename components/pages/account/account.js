@@ -1,5 +1,5 @@
 // import { switchView } from '../../init.js';
-import { icon_copy, icon_id } from '../../../utils/icons.js';
+import { icon_copy, icon_id } from '../../../img/icons.js';
 
 export function renderAccount() {
     const lang = localStorage.getItem('language') || 'ru';

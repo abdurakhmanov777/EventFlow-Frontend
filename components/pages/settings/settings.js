@@ -1,5 +1,5 @@
 import { switchView } from '../../init.js';
-import { icon_arrow, icon_account, icon_language, icon_theme, icon_support, icon_star } from '../../../utils/icons.js';
+import { icon_arrow, icon_account, icon_language, icon_theme, icon_support, icon_star } from '../../../img/icons.js';
 import { addAnimation } from '../../../utils/animations.js';
 import { sidebar_passive } from '../../sidebar/sidebar.js';
 

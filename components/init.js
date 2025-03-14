@@ -4,8 +4,8 @@ import { renderBotList } from './pages/botList/botList.js';
 import { renderMain } from './pages/main/main.js';
 import { renderSubscription } from './pages/subscription/subscription.js';
 import { renderSettings } from './pages/settings/settings.js';
-import { renderLanguage } from './pages/language/language.js';
-import { renderTheme } from './pages/theme/theme.js';
+import { renderLanguage } from './pages/options/language.js';
+import { renderTheme } from './pages/options/theme.js';
 import { updateActiveButton, renderSidebar } from './sidebar/sidebar.js';
 import { renderAccount } from './pages/account/account.js';
 import { addAnimation } from '../utils/animations.js';
@@ -28,7 +28,6 @@ export function switchView(view) {
     currentView = view;
     sessionStorage.setItem('page', view);
     render();
-    // sidebar_passive();
     tg.BackButton[currentView === 'main' ? 'hide' : 'show']();
     updateActiveButton(currentView);
 }
@@ -39,16 +38,12 @@ function render() {
     document.getElementById('topPanel').style.display = isMainView ? 'flex' : 'none';
 }
 
-export async function initializeApp() {
+export const initializeApp = async () => {
     await initLocalization();
     renderSidebar();
     switchView(currentView);
     tg.BackButton.onClick(() => {
-        if (['account', 'language', 'theme'].includes(currentView)) {
-            switchView('settings');
-            addAnimation('.page');
-        } else {
-            switchView('main');
-        }
+        switchView(['account', 'language', 'theme'].includes(currentView) ? 'settings' : 'main');
+        if (currentView === 'settings') addAnimation('.page');
     });
 }
