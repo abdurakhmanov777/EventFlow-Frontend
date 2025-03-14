@@ -47,7 +47,7 @@
             "next": "Далее"
         },
         "error": {
-            "incorrect": "Incorrect",
+            "incorrect": "Некорректно",
             "name": "имя бота",
             "api": "bot API"
         },
