@@ -1,11 +1,14 @@
 import { switchView } from '../../init.js';
-import { icon_arrow, icon_account, icon_language, icon_theme, icon_support, icon_star } from '../../../img/icons.js';
+import { icon_arrow, icon_account, icon_language, icon_theme, icon_support, icon_star } from '../../../utils/icons.js';
 import { addAnimation } from '../../../utils/animations.js';
+import { sidebar_passive } from '../../sidebar/sidebar.js';
 
 export function renderSettings() {
+    sidebar_passive();
+
     const lang = localStorage.getItem('language') || 'ru';
     const theme = localStorage.getItem('theme') || 'system'
-    const localData = JSON.parse(sessionStorage.getItem(`lang_${lang}`));
+    const data = JSON.parse(sessionStorage.getItem(`lang_${lang}`));
 
     document.querySelector('#root').innerHTML = '';
     document.querySelector('#root').insertAdjacentHTML('afterbegin', `
@@ -17,10 +20,10 @@ export function renderSettings() {
                     </div>
                     <div class='content'>
                         <span class='title'>
-                            ${localData.settings.account.name}
+                            ${data.settings.account.name}
                         </span>
                         <span class='value'>
-                            ${localData.settings.account.settings}
+                            ${data.settings.account.settings}
                             ${icon_arrow}
                         </span>
                     </div>
@@ -31,15 +34,15 @@ export function renderSettings() {
                     </div>
                     <div class='content'>
                         <span class='title'>
-                            ${localData.settings.subscription.name}
+                            ${data.settings.subscription.name}
                         </span>
                         <span class='value'>
-                            ${localData.settings.subscription.value}
+                            ${data.settings.subscription.value}
                         </span>
                     </div>
                 </div>
                 <button id='settingsSubscriptionBtn'>
-                    ${localData.settings.subscription.buy}
+                    ${data.settings.subscription.buy}
                 </button>
             </div>
             <div class='settings-list'>
@@ -49,10 +52,10 @@ export function renderSettings() {
                     </div>
                     <div class='content'>
                         <span id='textSystemLanguage' class='title'>
-                            ${localData?.settings.language.name}
+                            ${data?.settings.language.name}
                         </span>
                         <span class='value'>
-                            ${localData?.settings.language.value}
+                            ${data?.settings.language.value}
                             ${icon_arrow}
                         </span>
                     </div>
@@ -63,10 +66,10 @@ export function renderSettings() {
                     </div>
                     <div class='content'>
                         <span id='textTheme' class='title'>
-                            ${localData?.settings.theme.name}
+                            ${data?.settings.theme.name}
                         </span>
                         <span class='value'>
-                            ${localData.settings.theme?.[`${theme}`]}
+                            ${data.settings.theme?.[`${theme}`]}
                             ${icon_arrow}
                         </span>
                     </div>
@@ -79,10 +82,10 @@ export function renderSettings() {
                     </div>
                     <div class='content'>
                         <span id='textContactAdmin' class='title'>
-                            ${localData?.settings.support.name}
+                            ${data?.settings.support.name}
                         </span>
                         <span class='value'>
-                            ${localData?.settings.support.value}
+                            ${data?.settings.support.value}
                             ${icon_arrow}
                         </span>
                     </div>
@@ -99,7 +102,7 @@ export function renderSettings() {
         addAnimation('.full-page');
     });
     document.getElementById('contact_admin').addEventListener('click', function() {
-        window?.Telegram.WebApp.openTelegramLink('https://t.me/abdurakhmanov777');
+        Telegram?.WebApp.openTelegramLink('https://t.me/abdurakhmanov777');
     });
     document.getElementById('settingsSubscriptionBtn').addEventListener('click', () => {
         switchView('subscription');
@@ -109,9 +112,8 @@ export function renderSettings() {
         switchView('account');
         addAnimation('.full-page');
     });
-
     // document.getElementById('userIdBtn').addEventListener('click', () => {
-    //     const message = localData?.settings.account.copyUserId;
+    //     const message = data?.settings.account.copyUserId;
     //     navigator.clipboard.writeText(userId)
     //         .then(() => window?.Telegram.WebApp.showAlert(message));
     // });

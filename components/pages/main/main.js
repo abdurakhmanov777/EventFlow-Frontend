@@ -1,19 +1,22 @@
 import { switchView } from '../../init.js';
+import { sidebar_passive } from '../../sidebar/sidebar.js';
 
 export function renderMain() {
+    sidebar_passive();
+
     const lang = localStorage.getItem('language') || 'ru';
-    const localData = JSON.parse(sessionStorage.getItem(`lang_${lang}`));
+    const data = JSON.parse(sessionStorage.getItem(`lang_${lang}`));
 
     document.querySelector('#root').innerHTML = '';
     document.querySelector('#root').insertAdjacentHTML('afterbegin', `
         <div id='main' class='page'>
-            <h1>${localData?.main.header}</h1>
+            <h1>${data?.main.header}</h1>
             <div id='buttonContainer'>
                 <button id='createBotButton' class='start-button'>
-                    ${localData?.main.createBot}
+                    ${data?.main.createBot}
                 </button>
                 <button id='myBotsButton' class='start-button'>
-                    ${localData?.main.myBots}
+                    ${data?.main.myBots}
                 </button>
             </div>
         </div>

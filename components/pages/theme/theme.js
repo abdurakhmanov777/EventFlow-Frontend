@@ -1,20 +1,20 @@
 // import { switchView } from '../index.js';
-import { icon_checkmark } from '../../../img/icons.js';
+import { icon_checkmark } from '../../../utils/icons.js';
 
 export function renderTheme() {
     let theme = localStorage.getItem('theme') || 'system';
     const lang = localStorage.getItem('language') || 'ru';
-    const localData = JSON.parse(sessionStorage.getItem(`lang_${lang}`));
+    const data = JSON.parse(sessionStorage.getItem(`lang_${lang}`));
 
     document.querySelector('#root').innerHTML = '';
     document.querySelector('#root').insertAdjacentHTML('afterbegin', `
         <div id='themeSection' class='full-page'>
-            <h4>${localData.settings.theme.name}</h4>
+            <h4>${data.settings.theme.name}</h4>
             <div class='settings-list'>
                 <label class='settings-option'>
                     <input type='radio' name='theme' value='system'>
                     <div class='text'>
-                        <span id='textThemeSystem'>${localData.settings.theme.system}</span>
+                        <span id='textThemeSystem'>${data.settings.theme.system}</span>
                     </div>
                     <i class='checkmark'>
                         ${icon_checkmark}
@@ -23,7 +23,7 @@ export function renderTheme() {
                 <label class='settings-option'>
                     <input type='radio' name='theme' value='dark'>
                     <div class='text'>
-                        <span id='textThemeDark'>${localData.settings.theme.dark}</span>
+                        <span id='textThemeDark'>${data.settings.theme.dark}</span>
                     </div>
                     <i class='checkmark'>
                         ${icon_checkmark}
@@ -32,7 +32,7 @@ export function renderTheme() {
                 <label class='settings-option'>
                     <input type='radio' name='theme' value='light'>
                     <div class='text'>
-                        <span id='textThemeLight'>${localData.settings.theme.light}</span>
+                        <span id='textThemeLight'>${data.settings.theme.light}</span>
                     </div>
                     <i class='checkmark'>
                         ${icon_checkmark}

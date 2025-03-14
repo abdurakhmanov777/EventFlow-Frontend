@@ -1,15 +1,15 @@
 // import { switchView } from '../../index.js';
-import { icon_checkmark } from '../../../img/icons.js';
+import { icon_checkmark } from '../../../utils/icons.js';
 import { editLocalization } from '../../../utils/localization.js';
 
 export function renderLanguage() {
     let lang = localStorage.getItem('language') || 'ru';
-    let localData = JSON.parse(sessionStorage.getItem(`lang_${lang}`));
+    let data = JSON.parse(sessionStorage.getItem(`lang_${lang}`));
 
     document.querySelector('#root').innerHTML = '';
     document.querySelector('#root').insertAdjacentHTML('afterbegin', `
         <div id='languageSection' class='full-page'>
-            <h3>${localData.settings.language.name}</h3>
+            <h3>${data.settings.language.name}</h3>
             <div class='settings-list'>
                 <label class='settings-option'>
                     <input type='radio' name='language' value='en'>

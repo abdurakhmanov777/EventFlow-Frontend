@@ -6,7 +6,7 @@ import { renderSubscription } from './pages/subscription/subscription.js';
 import { renderSettings } from './pages/settings/settings.js';
 import { renderLanguage } from './pages/language/language.js';
 import { renderTheme } from './pages/theme/theme.js';
-import { initMenu, updateActiveButton, sidebar_passive } from './sidebar/sidebar.js';
+import { updateActiveButton, renderSidebar } from './sidebar/sidebar.js';
 import { renderAccount } from './pages/account/account.js';
 import { addAnimation } from '../utils/animations.js';
 
@@ -28,7 +28,7 @@ export function switchView(view) {
     currentView = view;
     sessionStorage.setItem('page', view);
     render();
-    sidebar_passive();
+    // sidebar_passive();
     tg.BackButton[currentView === 'main' ? 'hide' : 'show']();
     updateActiveButton(currentView);
 }
@@ -41,8 +41,8 @@ function render() {
 
 export async function initializeApp() {
     await initLocalization();
+    renderSidebar();
     switchView(currentView);
-    initMenu();
     tg.BackButton.onClick(() => {
         if (['account', 'language', 'theme'].includes(currentView)) {
             switchView('settings');
