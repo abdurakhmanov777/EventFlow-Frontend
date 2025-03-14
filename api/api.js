@@ -2,36 +2,42 @@
 const BASE_URL = "http://127.0.0.1:8000";
 
 export async function validateAndSubmitForm() {
-    const name = document.getElementById('botNameInput').value.trim();
-    const api = document.getElementById('botApiInput').value.trim();
-    // Telegram.WebApp.showAlert(`${name} ${api}`);
-    const userId = Telegram.WebApp?.initDataUnsafe?.user?.id || 'unknown';
-
     const lang = localStorage.getItem('language') || 'ru';
     const data = JSON.parse(sessionStorage.getItem(`lang_${lang}`));
 
-    // const [errorTextApi, errorTextName, errorIncorrect, successfull, unsuccessfull] =
+    const botNameInput = document.getElementById('botNameInput');
+    const botApiInput = document.getElementById('botApiInput');
 
+    const name = botNameInput.value.trim();
+    const api = botApiInput.value.trim();
+    const userId = Telegram.WebApp?.initDataUnsafe?.user?.id || 'unknown';
+
+    const errors = [];
     if (name.length < 5) errors.push(data.botForm.error.name);
     if (api.length < 5) errors.push(data.botForm.error.api);
 
-    document.getElementById('botNameInput').classList.toggle("error", name.length < 5);
-    document.getElementById('botApiInput').classList.toggle("error", api.length < 5);
+    botNameInput.classList.toggle("error", name.length < 5);
+    botApiInput.classList.toggle("error", api.length < 5);
 
     if (errors.length) {
         return Telegram.WebApp.showAlert(`${data.botForm.error.incorrect}: ${errors.join(", ")}`);
     }
 
     try {
-        await fetch(`${BASE_URL}/bot/submit_bot_name`, {
+        const response = await fetch(`${BASE_URL}/bot/submit_bot_name`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ user_id: userId, name, api })
         });
+
+        if (!response.ok) {
+            throw new Error(`Ошибка HTTP: ${response.status}`);
+        }
+
         Telegram.WebApp.showAlert(data.botForm.successfull);
     } catch (error) {
-        Telegram.WebApp.showAlert(data.botForm.unsuccessfull);
         console.error('Ошибка при отправке данных:', error);
+        Telegram.WebApp.showAlert(data.botForm.unsuccessfull);
     }
 }
 

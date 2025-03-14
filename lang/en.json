@@ -52,8 +52,8 @@
             "name": "bot name",
             "api": "bot API"
         },
-        "successful": "The data has been sent successfully",
-        "unsuccessful": "Error when sending data"
+        "successfull": "The data has been sent successfully",
+        "unsuccessfull": "Error when sending data"
     },
     "noBots": "You have no bots yet"
 }

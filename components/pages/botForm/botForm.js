@@ -5,6 +5,7 @@ import { switchView } from '../../init.js';
 export function renderBotForm() {
     const lang = localStorage.getItem('language') || 'ru';
     const data = JSON.parse(sessionStorage.getItem(`lang_${lang}`));
+    const clearError = (event) => event.target.classList.remove("error");
 
     document.querySelector('#root').innerHTML = '';
     document.querySelector('#root').insertAdjacentHTML('afterbegin', `
@@ -26,7 +27,10 @@ export function renderBotForm() {
     document.getElementById('backButton').addEventListener('click', () => {
         switchView('main');
     });
-    // document.getElementById('nextButton').addEventListener('click', () => {
-    //     validateAndSubmitForm();
-    // });
+    document.getElementById('nextButton').addEventListener('click', () => {
+        validateAndSubmitForm();
+    });
+
+    document.getElementById('botNameInput').addEventListener("focus", clearError);
+    document.getElementById('botApiInput').addEventListener("focus", clearError);
 }
