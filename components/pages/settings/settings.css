@@ -48,6 +48,7 @@
     font-size: 18px;
     margin-right: 12px;
     flex-shrink: 0;
+    color: var(--icon-color);
 }
 
 .content {
@@ -83,13 +84,13 @@
 }
 
 .settings-option .checkmark {
-    /* background-image: url('../../../img/icons/chekmark.svg'); */
     width: 23px;
     height: 23px;
     align-items: center;
     justify-content: center;
     margin-right: 12px;
     flex-shrink: 0;
+    color: var(--checkmark-color);
 }
 
 .text {

@@ -7,6 +7,12 @@
 
 :root {
     --accent-color: #00693e;
+    /* --accent-color: gold; */
+    --input-focus-color: #00ca39;
+    --input-error-color: rgb(216, 2, 2);
+    --checkmark-color: #00cc66;
+    /* --checkmark-color: gold; */
+    --icon-color: #ffffff;
 }
 
 input {
@@ -20,13 +26,13 @@ input {
 }
 
 input:focus {
-    outline: 2px solid #0088cc;
+    outline: 2px solid var(--input-focus-color);
 }
 
 /* Стиль для поля с ошибкой */
 input.error {
     /* border-color: rgba(255, 0, 0, 0.559); */
-    outline: 2px solid var(--tg-theme-destructive-text-color);
+    outline: 2px solid var(--input-error-color);
     outline-width: 2px;
 }
 
