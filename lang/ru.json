@@ -50,10 +50,9 @@
             "incorrect": "Incorrect",
             "name": "имя бота",
             "api": "bot API"
-        }
+        },
+        "successfully": "Данные успешно отправлены",
+        "unsuccessfulSending": "Ошибка при отправке данных"
     },
-
-    "successfully": "Данные успешно отправлены",
-    "unsuccessfulSending": "Ошибка при отправке данных",
     "noBots": "У вас пока нет ботов"
 }

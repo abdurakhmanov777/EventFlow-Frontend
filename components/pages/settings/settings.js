@@ -108,17 +108,7 @@ export function renderSettings() {
         switchView('subscription');
     });
     document.getElementById('accountBtn').addEventListener('click', () => {
-        // addAnimation();
         switchView('account');
         addAnimation('.full-page');
     });
-    // document.getElementById('userIdBtn').addEventListener('click', () => {
-    //     const message = data?.settings.account.copyUserId;
-    //     navigator.clipboard.writeText(userId)
-    //         .then(() => window?.Telegram.WebApp.showAlert(message));
-    // });
-
-    // document.getElementById('myBotsButton').addEventListener('click', () => {
-    //     switchView('botList');
-    // });
 }
