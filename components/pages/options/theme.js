@@ -1,4 +1,4 @@
-import { icon_checkmark } from "../../../img/icons.js";
+import { icon_checkmark } from '../../../img/icons.js';
 
 export function renderTheme() {
     let theme = localStorage.getItem('theme') || 'system';
@@ -78,19 +78,19 @@ export function renderTheme() {
 
 async function loadTheme(theme) {
     localStorage.setItem('theme', theme);
-    // if (theme === "system") {
-    //     const section_bg_color = tg.themeParams.section_bg_color || "#ffffff";
+    // if (theme === 'system') {
+    //     const section_bg_color = tg.themeParams.section_bg_color || '#ffffff';
     //     tg.setHeaderColor(section_bg_color);
     //     // Telegram.WebApp.showAlert(section_bg_color)
     //     tg.setBackgroundColor(section_bg_color);
-    // } else if (theme === "dark") {
-    //     tg.setHeaderColor("#000000");
-    //     tg.setBackgroundColor("#000000");
-    // } else if (theme === "light") {
-    //     tg.setHeaderColor("#ffffff");
-    //     tg.setBackgroundColor("#ffffff");
+    // } else if (theme === 'dark') {
+    //     tg.setHeaderColor('#000000');
+    //     tg.setBackgroundColor('#000000');
+    // } else if (theme === 'light') {
+    //     tg.setHeaderColor('#ffffff');
+    //     tg.setBackgroundColor('#ffffff');
     // } else {
-    //     console.warn("Неизвестная тема:", theme);
+    //     console.warn('Неизвестная тема:', theme);
     // }
 }
 

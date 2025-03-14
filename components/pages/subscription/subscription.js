@@ -1,6 +1,6 @@
 // import { switchView } from '../index.js';
 
-import { sidebar_passive } from "../../sidebar/sidebar.js";
+import { sidebar_passive } from '../../sidebar/sidebar.js';
 
 export function renderSubscription() {
     sidebar_passive();

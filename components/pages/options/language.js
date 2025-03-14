@@ -1,5 +1,5 @@
-import { icon_checkmark } from "../../../img/icons.js";
-import { editLocalization } from "../../../utils/localization.js";
+import { icon_checkmark } from '../../../img/icons.js';
+import { editLocalization } from '../../../utils/localization.js';
 
 export function renderLanguage() {
     const lang = localStorage.getItem('language') || 'ru';

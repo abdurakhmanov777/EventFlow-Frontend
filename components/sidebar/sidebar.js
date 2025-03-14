@@ -57,26 +57,26 @@ export function renderSidebar() {
 
     document.querySelector('#root-sidebar').innerHTML = '';
     document.querySelector('#root-sidebar').insertAdjacentHTML('afterbegin', `
-        <div id="sidebar">
+        <div id='sidebar'>
             <ul>
-                <button id="mainBtn">
+                <button id='mainBtn'>
                     ${data.sidebar.main}
                 </button>
-                <button id="subscriptionBtn">
+                <button id='subscriptionBtn'>
                     ${data.sidebar.subscription}
                 </button>
-                <button id="settingsBtn">
+                <button id='settingsBtn'>
                     ${data.sidebar.settings}
                 </button>
             </ul>
-            <div id="sidebarFooter">ProjectByDalgat</div>
+            <div id='sidebarFooter'>ProjectByDalgat</div>
         </div>
-        <div id="topPanel">
-            <button class="menu-button" id="menuBtn">
-                <div class="icon-menu">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M3 8.5H21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                        <path d="M3 15.5H16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+        <div id='topPanel'>
+            <button class='menu-button' id='menuBtn'>
+                <div class='icon-menu'>
+                    <svg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'>
+                        <path d='M3 8.5H21' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'></path>
+                        <path d='M3 15.5H16' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'></path>
                     </svg>
                 </div>
             </button>

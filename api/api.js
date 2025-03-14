@@ -10,11 +10,14 @@ export async function validateAndSubmitForm() {
 
     const name = botNameInput.value.trim();
     const api = botApiInput.value.trim();
-    const userId = Telegram.WebApp?.initDataUnsafe?.user?.id || 'unknown';
+    const userId = Telegram.WebApp.initDataUnsafe.user?.id || 'unknown';
+
+    // const apiRegex = /\d{10}:[A-Za-z0-9_-]{35}/g;
+    const apiRegex = /^.{5,}$/;
 
     const errors = [];
     if (name.length < 5) errors.push(data.botForm.error.name);
-    if (api.length < 5) errors.push(data.botForm.error.api);
+    if (!api.match(apiRegex)) errors.push(data.botForm.error.api);
 
     botNameInput.classList.toggle("error", name.length < 5);
     botApiInput.classList.toggle("error", api.length < 5);
@@ -22,23 +25,23 @@ export async function validateAndSubmitForm() {
     if (errors.length) {
         return Telegram.WebApp.showAlert(`${data.botForm.error.incorrect}: ${errors.join(", ")}`);
     }
+    Telegram.WebApp.showAlert(data.botForm.successfull);
+    // try {
+    //     const response = await fetch(`${BASE_URL}/bot/submit_bot_name`, {
+    //         method: "POST",
+    //         headers: { "Content-Type": "application/json" },
+    //         body: JSON.stringify({ user_id: userId, name, api })
+    //     });
 
-    try {
-        const response = await fetch(`${BASE_URL}/bot/submit_bot_name`, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ user_id: userId, name, api })
-        });
+    //     if (!response.ok) {
+    //         throw new Error(`Ошибка HTTP: ${response.status}`);
+    //     }
 
-        if (!response.ok) {
-            throw new Error(`Ошибка HTTP: ${response.status}`);
-        }
-
-        Telegram.WebApp.showAlert(data.botForm.successfull);
-    } catch (error) {
-        console.error('Ошибка при отправке данных:', error);
-        Telegram.WebApp.showAlert(data.botForm.unsuccessfull);
-    }
+    //     Telegram.WebApp.showAlert(data.botForm.successfull);
+    // } catch (error) {
+    //     console.error('Ошибка при отправке данных:', error);
+    //     Telegram.WebApp.showAlert(data.botForm.unsuccessfull);
+    // }
 }
 
 export async function fetchBotList(userId) {

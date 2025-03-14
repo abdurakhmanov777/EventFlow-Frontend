@@ -5,7 +5,7 @@ import { switchView } from '../../init.js';
 export function renderBotForm() {
     const lang = localStorage.getItem('language') || 'ru';
     const data = JSON.parse(sessionStorage.getItem(`lang_${lang}`));
-    const clearError = (event) => event.target.classList.remove("error");
+    const clearError = (event) => event.target.classList.remove('error');
 
     document.querySelector('#root').innerHTML = '';
     document.querySelector('#root').insertAdjacentHTML('afterbegin', `
@@ -18,7 +18,7 @@ export function renderBotForm() {
 
             <div class='buttonContainer'>
                 <button id='backButton' class='button'>${data.botForm.button.back}</button>
-                <button id='nextButton' class='button'>${data.botForm.button.next}</button>
+                <button id='nextButton' type='button' class='button'>${data.botForm.button.next}</button>
             </div>
         </form>
     `);
@@ -29,8 +29,11 @@ export function renderBotForm() {
     });
     document.getElementById('nextButton').addEventListener('click', () => {
         validateAndSubmitForm();
+        // Telegram.WebApp?.showAlert(data.botForm.successfull);
     });
 
-    document.getElementById('botNameInput').addEventListener("focus", clearError);
-    document.getElementById('botApiInput').addEventListener("focus", clearError);
+    // document.getElementById('botNameInput').addEventListener('input', clearError);
+    // document.getElementById('botApiInput').addEventListener('input', clearError);
+    document.getElementById('botNameInput').addEventListener('focus', clearError);
+    document.getElementById('botApiInput').addEventListener('focus', clearError);
 }
