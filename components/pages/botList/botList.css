@@ -1,15 +1,17 @@
 #botList {
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
 }
 
 #botListContainer {
+    background-color: var(--container-color);
+    border-radius: 12px;
+    width: 100%;
     display: flex;
+    /* flex-direction: column; */
     justify-content: center;
     align-items: flex-start;
-    margin: 5%;
-    max-height: 80%;
+    max-height: 100%;
     overflow-y: auto;
     position: relative;
     padding: 20px;
@@ -30,28 +32,40 @@
     margin-top: 0;
 }
 
+.botListItems {
+    position: relative;
+    width: 100%;
+    padding: 0 20px;
+}
+
+.botListItems:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background-color: var(--container-color);
+}
+
 
 .bot-button {
     width: 100%;
     padding: 12px;
     margin-bottom: 20px;
     font-size: 16px;
-    color: var(--tg-theme-button-text-color);
+    color: var(--text-button-color);
+    background-color: (--accent-color);
+    /* background-color: transparent; */
 }
+
+.bot-button:last-child {
+    margin-bottom: 0; /* убираем отступ для последнего элемента */
+}
+
 
 .bot-button:hover {
     filter: brightness(0.9);
-}
-
-.center-message {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: var(--tg-viewport-height);
-    /* height: 100vh; */
-    font-size: 24px;
-    color: red;
-    text-align: center;
 }
 
 .no-bots-message {

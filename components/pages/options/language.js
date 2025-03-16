@@ -40,7 +40,7 @@ export function renderLanguage() {
     // document.getElementById('myBotsButton').addEventListener('click', () => {
     //     switchView('botList');
     // });
-
+    Telegram.WebApp.setBackgroundColor('#000000');
     function filterOptionsByName(name) {
         const options = document.querySelectorAll('.settings-option');
         return Array.from(options).filter(option => {

@@ -72,29 +72,31 @@ export function renderTheme() {
             checkmark.style.display = 'inline';
         }
     }
-
 }
 
 
 async function loadTheme(theme) {
-    localStorage.setItem('theme', theme);
-    // if (theme === 'system') {
-    //     const section_bg_color = tg.themeParams.section_bg_color || '#ffffff';
-    //     tg.setHeaderColor(section_bg_color);
-    //     // Telegram.WebApp.showAlert(section_bg_color)
-    //     tg.setBackgroundColor(section_bg_color);
-    // } else if (theme === 'dark') {
-    //     tg.setHeaderColor('#000000');
-    //     tg.setBackgroundColor('#000000');
-    // } else if (theme === 'light') {
-    //     tg.setHeaderColor('#ffffff');
-    //     tg.setBackgroundColor('#ffffff');
-    // } else {
-    //     console.warn('Неизвестная тема:', theme);
-    // }
+    const tg = Telegram?.WebApp;
+    const selectedTheme = theme === 'system' ? tg.colorScheme : theme;
+
+    localStorage.setItem('theme', selectedTheme);
+    document.documentElement.setAttribute('data-theme', selectedTheme);
+
+    const headerColor = getComputedStyle(document.documentElement).getPropertyValue('--bg-color').trim();
+    tg.setHeaderColor(headerColor);
+    tg.setBottomBarColor(headerColor);
 }
 
+
+// tg.showAlert(Telegram.WebApp.version)
+// Telegram.WebApp.setColorScheme("dark");
+// tg.showAlert(Telegram.WebApp.colorScheme);
+// Telegram.WebApp.colorScheme = "dark";
+
 export async function initTheme() {
-    const theme = localStorage.getItem('theme') || 'system';
-    await loadTheme(theme);
+    loadTheme(localStorage.getItem('theme') || 'system');
+
+    Telegram.WebApp.onEvent('themeChanged', () => {
+        loadTheme(localStorage.getItem('theme') || 'system');
+    });
 }

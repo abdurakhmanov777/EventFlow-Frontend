@@ -1,13 +1,15 @@
 import { initializeApp } from "./components/init.js";
+import { initTheme } from "./components/pages/options/theme.js";
 
-document.addEventListener('DOMContentLoaded', () => {
-    const tg = Telegram?.WebApp;
-    // if (!tg.initDataUnsafe?.user?.id) {
-    //     document.body.innerHTML = '<div class="center-message">The site is unavailable outside of Telegram</div>';
-    //     return;
-    // }
-    tg.expand();
-    tg.disableVerticalSwipes();
-    // tg.enableClosingConfirmation();
-    initializeApp();
-});
+const tg = Telegram?.WebApp;
+tg.expand();
+tg.disableVerticalSwipes();
+initializeApp();
+// document.addEventListener('DOMContentLoaded', () => {
+//     // if (!tg.initDataUnsafe?.user?.id) {
+//     //     document.body.innerHTML = '<div class="center-message">The site is unavailable outside of Telegram</div>';
+//     //     return;
+//     // }
+//     // tg.enableClosingConfirmation();
+//     initializeApp();
+// });

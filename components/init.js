@@ -5,7 +5,7 @@ import { renderMain } from './pages/main/main.js';
 import { renderSubscription } from './pages/subscription/subscription.js';
 import { renderSettings } from './pages/settings/settings.js';
 import { renderLanguage } from './pages/options/language.js';
-import { renderTheme } from './pages/options/theme.js';
+import { initTheme, renderTheme } from './pages/options/theme.js';
 import { updateActiveButton, renderSidebar } from './sidebar/sidebar.js';
 import { renderAccount } from './pages/account/account.js';
 import { addAnimation } from '../utils/animations.js';
@@ -39,11 +39,14 @@ function render() {
 }
 
 export const initializeApp = async () => {
-    await initLocalization();
-    renderSidebar();
-    switchView(currentView);
-    tg.BackButton.onClick(() => {
-        switchView(['account', 'language', 'theme'].includes(currentView) ? 'settings' : 'main');
-        if (currentView === 'settings') addAnimation('.page');
+    await initTheme();
+    document.addEventListener('DOMContentLoaded', async () => {
+        await initLocalization();
+        renderSidebar();
+        switchView(currentView);
+        tg.BackButton.onClick(() => {
+            switchView(['account', 'language', 'theme'].includes(currentView) ? 'settings' : 'main');
+            if (currentView === 'settings') addAnimation('.page');
+        });
     });
-}
+};

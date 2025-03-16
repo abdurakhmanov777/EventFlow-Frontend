@@ -11,6 +11,10 @@
         "settings": "Settings"
     },
 
+    "botList": {
+        "header" : "Created bots"
+    },
+
     "settings" : {
         "account": {
             "name": "Account",
@@ -48,12 +52,17 @@
             "next": "Next"
         },
         "error": {
-            "incorrect": "Incorrect",
+            "incorrect": "Incorrect input",
             "name": "bot name",
             "api": "bot API"
         },
-        "successfull": "The data has been sent successfully",
-        "unsuccessfull": "Error when sending data"
+        "success": {
+            "true": "The data has been sent successy",
+            "false": "There is already a bot with the following parameters: ",
+            "name": "name",
+            "api": "API"
+        },
+        "unsuccess": "Error when sending data"
     },
     "noBots": "You have no bots yet"
 }

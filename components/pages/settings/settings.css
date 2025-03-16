@@ -4,7 +4,7 @@
 }
 
 .settings-list {
-    background-color: var(--tg-theme-secondary-bg-color);
+    background-color: var(--container-color);
     border-radius: 12px;
     width: 100%;
     display: flex;
@@ -34,7 +34,7 @@
     left: 20px;
     right: 20px;
     height: 1px;
-    background-color: var(--tg-theme-subtitle-text-color);
+    background-color: var(--dividing-line);
 }
 
 .icon {
@@ -68,14 +68,14 @@
 .title {
     font-size: 16px;
     font-weight: bold;
-    color: var(--tg-theme-text-color);
+    color: var(--text-color);
 }
 
 
 .value, .text small {
     font-size: 14px;
     font-weight: normal;
-    color: var(--tg-theme-subtitle-text-color);
+    color: var(--subtitle-text-color);
 }
 
 
@@ -109,11 +109,11 @@
     display: block;
 }
 
-h2, h3, h4 {
+h2, h3, h4, h5 {
     text-transform: uppercase;
     align-self: flex-start;
     font-size: 14px;
-    color: var(--tg-theme-subtitle-text-color);
+    color: var(--subtitle-text-color);
     margin-left: 18px;
     margin-bottom: 9px;
 }

@@ -1,5 +1,5 @@
-// const BASE_URL = "https://4g7zqplm-8000.euw.devtunnels.ms";
-const BASE_URL = "http://127.0.0.1:8000";
+// const BASE_URL = 'https://4g7zqplm-8000.euw.devtunnels.ms';
+const BASE_URL = 'http://127.0.0.1:8000';
 
 export async function validateAndSubmitForm() {
     const lang = localStorage.getItem('language') || 'ru';
@@ -19,59 +19,65 @@ export async function validateAndSubmitForm() {
     if (name.length < 5) errors.push(data.botForm.error.name);
     if (!api.match(apiRegex)) errors.push(data.botForm.error.api);
 
-    botNameInput.classList.toggle("error", name.length < 5);
-    botApiInput.classList.toggle("error", api.length < 5);
+    botNameInput.classList.toggle('error', name.length < 5);
+    botApiInput.classList.toggle('error', api.length < 5);
 
     if (errors.length) {
-        return Telegram.WebApp.showAlert(`${data.botForm.error.incorrect}: ${errors.join(", ")}`);
+        return Telegram.WebApp.showAlert(`${data.botForm.error.incorrect}: ${errors.join(', ')}`);
     }
-    Telegram.WebApp.showAlert(data.botForm.successfull);
-    // try {
-    //     const response = await fetch(`${BASE_URL}/bot/submit_bot_name`, {
-    //         method: "POST",
-    //         headers: { "Content-Type": "application/json" },
-    //         body: JSON.stringify({ user_id: userId, name, api })
-    //     });
+    try {
+        const response = await fetch(`${BASE_URL}/bot/submit_bot_name`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ user_id: userId, name, api })
+        });
 
-    //     if (!response.ok) {
-    //         throw new Error(`Ошибка HTTP: ${response.status}`);
-    //     }
+        if (!response.ok) throw new Error(`Ошибка HTTP: ${response.status}`);
 
-    //     Telegram.WebApp.showAlert(data.botForm.successfull);
-    // } catch (error) {
-    //     console.error('Ошибка при отправке данных:', error);
-    //     Telegram.WebApp.showAlert(data.botForm.unsuccessfull);
-    // }
+        const result = await response.json();
+        if (result.message === true) {
+            Telegram.WebApp.showAlert(data.botForm.success.true);
+        } else {
+            const messageArr = [];
+            if (!(result.message[0])) messageArr.push(data.botForm.success.name);
+            if (!(result.message[1])) messageArr.push(data.botForm.success.api);
+            Telegram.WebApp.showAlert(`${data.botForm.success.false}${messageArr.join(', ')}`);
+        }
+    } catch (error) {
+        console.error('Ошибка при отправке данных:', error);
+        Telegram.WebApp.showAlert(data.botForm.unsuccess);
+    }
 }
 
-export async function fetchBotList(userId) {
+export async function fetchBotList() {
+    const userId = Telegram.WebApp.initDataUnsafe.user?.id;
     if (!userId) return;
 
     try {
         const response = await fetch(`${BASE_URL}/bot/get_bot_list`, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ user_id: userId })
         });
         const data = await response.json();
         updateBotList(data);
     } catch (error) {
         console.error('Ошибка при загрузке списка ботов:', error);
-        document.getElementById("noBotsMessage").style.display = "block";
-        document.getElementById("botListItems").style.display = "none";
+        document.getElementById('noBotsMessage').style.display = 'block';
+        document.getElementById('botListItems').style.display = 'none';
     }
 }
 
 function updateBotList(data) {
-    const botListItems = document.getElementById("botListItems")
-    const noBotsMessage = document.getElementById("noBotsMessage")
+    const botListItems = document.getElementById('botListItems')
+    const noBotsMessage = document.getElementById('noBotsMessage')
 
     if (data.bots?.length) {
-        botListItems.innerHTML = data.bots.map(bot => `<button class="bot-button">${bot.name}</button>`).join('');
-        botListItems.style.display = "block";
-        noBotsMessage.style.display = "none";
+        botListItems.innerHTML = data.bots.map(bot => `<button class='bot-button'>${bot.name}</button>`).join('');
+        botListItems.style.display = 'block';
+        noBotsMessage.style.display = 'none';
     } else {
-        botListItems.style.display = "none";
-        noBotsMessage.style.display = "block";
+        botListItems.style.display = 'none';
+        noBotsMessage.style.display = 'block';
     }
 }

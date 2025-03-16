@@ -13,7 +13,29 @@
     --checkmark-color: #00cc66;
     /* --checkmark-color: gold; */
     --icon-color: #ffffff;
+    --text-button-color: white;
+    --subtitle-text-color: gray;
 }
+
+
+
+[data-theme="dark"] {
+    --bg-color: #202020;
+    /* --bg-color: #121212; */
+    --container-color: #000000;
+    --text-color: white;
+    --dividing-line: rgb(72, 72, 72);
+}
+
+
+[data-theme="light"] {
+    --bg-color: #ffffff;
+    --container-color: #f0f0f0;
+    --text-color: black;
+    --dividing-line: rgb(197, 197, 197);
+}
+
+
 
 input {
     width: 100%;
@@ -44,7 +66,7 @@ button {
     font-size: 18px;
     font-weight: bold;
     /* cursor: pointer; */
-    color: var(--tg-theme-button-text-color);
+    color: var(--text-button-color);
     /* color: gold; */
     background-color: var(--accent-color);
     /* border: 3px solid gold; */
@@ -58,8 +80,8 @@ body, #root {
     display: flex;
     justify-self: center;
     flex-direction: column;
-    color: var(--tg-theme-text-color);
-    background: var(--tg-theme-section-bg-color);
+    color: var(--text-color);
+    background: var(--bg-color);
     align-items: center;
     justify-content: flex-start;
     width: 100vw;
@@ -113,4 +135,14 @@ body, #root {
         opacity: 1;
         transform: translateY(0);
     }
+}
+
+.center-message {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-size: 24px;
+    color: red;
+    text-align: center;
 }
