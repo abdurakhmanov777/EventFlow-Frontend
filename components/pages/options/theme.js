@@ -85,7 +85,6 @@ async function loadTheme(theme) {
     const headerColor = getComputedStyle(document.documentElement).getPropertyValue('--bg-color').trim();
     tg.setHeaderColor(headerColor);
     tg.setBottomBarColor(headerColor);
-    tg.showAlert(localStorage.getItem('theme'));
 }
 
 
