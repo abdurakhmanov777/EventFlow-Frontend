@@ -6,6 +6,7 @@ export async function loadTheme(theme) {
     document.documentElement.setAttribute('data-theme', selectedTheme);
 
     const headerColor = getComputedStyle(document.documentElement).getPropertyValue('--bg-color').trim();
+
     tg.setHeaderColor(headerColor);
     tg.setBottomBarColor(headerColor);
     tg.setBackgroundColor(headerColor);
@@ -18,9 +19,8 @@ export async function loadTheme(theme) {
 // Telegram.WebApp.colorScheme = "dark";
 
 export async function initTheme() {
-    loadTheme(localStorage.getItem('theme') || 'system');
+    const theme = localStorage.getItem('theme') || 'system';
+    loadTheme(theme);
 
-    Telegram.WebApp.onEvent('themeChanged', () => {
-        loadTheme(localStorage.getItem('theme') || 'system');
-    });
+    Telegram.WebApp.onEvent('themeChanged', () => loadTheme(theme));
 }
