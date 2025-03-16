@@ -12,10 +12,11 @@
     --icon-color: #ffffff;
     --text-button-color: white;
     --header-color: #808080;
+    --sidebar-shadow: #141414;
 }
 
 [data-theme="dark"] {
-    --bg-color: #202020;
+    --bg-color: #181819;
     --container-color: #000000;
     --subtitle-text-color: #666666;
     --text-color: white;

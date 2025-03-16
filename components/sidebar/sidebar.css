@@ -6,7 +6,7 @@
     height: calc(100% - 60px);
     background-color: var(--bg-color);
     /* background-color: red; */
-    box-shadow: 5px 0 25px rgba(0, 0, 0, 0.5);
+    box-shadow: 5px 0 25px var(--sidebar-shadow);
     transition: left 0.2s ease;
     padding-top: 60px;
     z-index: 20;
