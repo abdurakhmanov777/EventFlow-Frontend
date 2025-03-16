@@ -22,5 +22,8 @@ export async function initTheme() {
     const theme = localStorage.getItem('theme') || 'system';
     loadTheme(theme);
 
-    Telegram.WebApp.onEvent('themeChanged', () => loadTheme(theme));
+    Telegram.WebApp.onEvent('themeChanged', () => {
+        const updatedTheme = localStorage.getItem('theme') || 'system';
+        loadTheme(updatedTheme);
+    });
 }
