@@ -8,7 +8,6 @@
     --accent-color: #00693e;
     --input-focus-color: #00ca39;
     --input-error-color: #d50000;
-    --checkmark-color: #00cc66;
     --icon-color: #ffffff;
     --text-button-color: #ffffff;
 }
@@ -21,6 +20,7 @@
     --text-color: #ffffff;
     --dividing-line: #8998a05c;
     --sidebar-shadow: #000000c7;
+    --checkmark-color: #01bb6d;
 }
 
 [data-theme="light"] {
@@ -31,6 +31,7 @@
     --text-color: #000000;
     --dividing-line: #bbbbbb;
     --sidebar-shadow: #1414146f;
+    --checkmark-color: #009255;
 }
 
 html, body {
