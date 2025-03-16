@@ -1,12 +1,12 @@
 #sidebar {
     position: absolute;
     top: 0;
-    left: -350px;
+    left: -370px;
     width: 320px;
     height: calc(100% - 60px);
     background-color: var(--bg-color);
     /* background-color: red; */
-    box-shadow: 5px 0 25px var(--sidebar-shadow);
+    box-shadow: 15px 0 35px var(--sidebar-shadow);
     transition: left 0.2s ease;
     padding-top: 60px;
     z-index: 20;
@@ -46,7 +46,7 @@
 #sidebarFooter {
     text-align: center;
     padding: 15px;
-    color: var(--subtitle-text-color);
+    color: var(--footer-color);
     font-size: 15px;
     margin-top: auto;
 }

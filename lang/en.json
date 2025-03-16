@@ -31,7 +31,7 @@
             "value": "English"
         },
         "theme": {
-            "name": "Theme",
+            "name": "Color theme",
             "system": "System",
             "dark": "Dark",
             "light": "Light"
