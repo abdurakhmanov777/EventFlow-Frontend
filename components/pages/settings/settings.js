@@ -1,5 +1,5 @@
 import { switchView } from '../../init.js';
-import { icon_arrow, icon_account, icon_language, icon_theme, icon_support, icon_star } from '../../../img/icons.js';
+import { icon_arrow, icon_account, icon_language, icon_color, icon_support, icon_star } from '../../../img/icons.js';
 import { addAnimation } from '../../../utils/animations.js';
 import { sidebar_passive } from '../../sidebar/sidebar.js';
 
@@ -62,7 +62,7 @@ export function renderSettings() {
                 </button>
                 <button id='themeToggleButton' class='settings-item'>
                     <div class='icon'>
-                        ${icon_theme}
+                        ${icon_color}
                     </div>
                     <div class='content'>
                         <span id='textTheme' class='title'>
