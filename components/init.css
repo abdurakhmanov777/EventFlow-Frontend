@@ -2,74 +2,32 @@
     font-family: sans-serif;
     margin: 0;
     padding: 0;
-    /* box-sizing: border-box; */
 }
 
 :root {
     --accent-color: #00693e;
-    /* --accent-color: gold; */
     --input-focus-color: #00ca39;
-    --input-error-color: rgb(216, 2, 2);
+    --input-error-color: #d50000;
     --checkmark-color: #00cc66;
-    /* --checkmark-color: gold; */
     --icon-color: #ffffff;
     --text-button-color: white;
-    --subtitle-text-color: gray;
+    --header-color: #808080;
 }
-
-
 
 [data-theme="dark"] {
     --bg-color: #202020;
-    /* --bg-color: #121212; */
     --container-color: #000000;
+    --subtitle-text-color: #666666;
     --text-color: white;
-    --dividing-line: rgb(72, 72, 72);
+    --dividing-line: #555555;
 }
-
 
 [data-theme="light"] {
     --bg-color: #ffffff;
     --container-color: #f0f0f0;
+    --subtitle-text-color: #909090;
     --text-color: black;
-    --dividing-line: rgb(197, 197, 197);
-}
-
-
-
-input {
-    width: 100%;
-    padding: 12px;
-    margin-bottom: 15px; /* Немного больше отступов */
-    border: 1px solid silver;
-    border-radius: 5px;
-    font-size: 16px;
-    outline: none;
-}
-
-input:focus {
-    outline: 2px solid var(--input-focus-color);
-}
-
-/* Стиль для поля с ошибкой */
-input.error {
-    /* border-color: rgba(255, 0, 0, 0.559); */
-    outline: 2px solid var(--input-error-color);
-    outline-width: 2px;
-}
-
-button {
-    border: none;
-    border-radius: 8px;
-    height: 50px;
-    width: 48%;
-    font-size: 18px;
-    font-weight: bold;
-    /* cursor: pointer; */
-    color: var(--text-button-color);
-    /* color: gold; */
-    background-color: var(--accent-color);
-    /* border: 3px solid gold; */
+    --dividing-line: #bbbbbb;
 }
 
 html, body {
@@ -78,7 +36,6 @@ html, body {
 
 body, #root {
     display: flex;
-    justify-self: center;
     flex-direction: column;
     color: var(--text-color);
     background: var(--bg-color);
@@ -86,8 +43,6 @@ body, #root {
     justify-content: flex-start;
     width: 100vw;
     height: 100vh;
-    /* background-color:#00693e; */
-
 }
 
 .page, .full-page {
@@ -100,8 +55,8 @@ body, #root {
 .page {
     height: calc(100% - 80px);
     margin-top: 60px;
-    /* background-color: blue; */
 }
+
 .page.animate {
     animation: slideOut 0.1s forwards;
 }
@@ -135,6 +90,35 @@ body, #root {
         opacity: 1;
         transform: translateY(0);
     }
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid silver;
+    border-radius: 5px;
+    font-size: 16px;
+    outline: none;
+}
+
+input:focus {
+    outline: 2px solid var(--input-focus-color);
+}
+
+input.error {
+    outline: 2px solid var(--input-error-color);
+}
+
+button {
+    border: none;
+    border-radius: 8px;
+    height: 50px;
+    width: 48%;
+    font-size: 18px;
+    font-weight: bold;
+    color: var(--text-button-color);
+    background-color: var(--accent-color);
 }
 
 .center-message {
