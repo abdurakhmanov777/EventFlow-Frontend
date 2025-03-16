@@ -34,13 +34,7 @@ export function renderLanguage() {
         </div>
     `);
     updateLanguageSelection(lang);
-    // document.getElementById('createBotButton').addEventListener('click', () => {
-    //     switchView('botForm');
-    // });
-    // document.getElementById('myBotsButton').addEventListener('click', () => {
-    //     switchView('botList');
-    // });
-    Telegram.WebApp.setBackgroundColor('#000000');
+
     function filterOptionsByName(name) {
         const options = document.querySelectorAll('.settings-option');
         return Array.from(options).filter(option => {

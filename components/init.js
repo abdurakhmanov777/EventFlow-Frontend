@@ -5,10 +5,11 @@ import { renderMain } from './pages/main/main.js';
 import { renderSubscription } from './pages/subscription/subscription.js';
 import { renderSettings } from './pages/settings/settings.js';
 import { renderLanguage } from './pages/options/language.js';
-import { initTheme, renderTheme } from './pages/options/theme.js';
+import { renderTheme } from './pages/options/theme.js';
 import { updateActiveButton, renderSidebar } from './sidebar/sidebar.js';
 import { renderAccount } from './pages/account/account.js';
 import { addAnimation } from '../utils/animations.js';
+import { initTheme } from '../utils/theme.js';
 
 const tg = Telegram?.WebApp;
 let currentView = sessionStorage.getItem('page') || 'main';
