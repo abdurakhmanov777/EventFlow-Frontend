@@ -51,7 +51,7 @@ export async function validateAndSubmitForm() {
 
 export async function fetchBotList() {
     const userId = Telegram.WebApp.initDataUnsafe.user?.id;
-    if (!userId) return;
+    if (!userId) return { bots: [] };
 
     try {
         const response = await fetch(`${BASE_URL}/bot/get_bot_list`, {
@@ -59,28 +59,8 @@ export async function fetchBotList() {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ user_id: userId })
         });
-        const data = await response.json();
-        updateBotList(data);
-        return data
-    } catch (error) {
-        console.error('Ошибка при загрузке списка ботов:', error);
-        // document.getElementById('botListItems').style.display = 'none';
-    }
-}
-
-
-function updateBotList(data) {
-    if (data.bots?.length) {
-        const botList = document.getElementById('botListContainer');
-        const botListItems = document.getElementById('botListItems');
-        const header = document.querySelector('h5');
-        botListItems.innerHTML = data.bots.map(bot =>
-            `<button class='bot-button' id='${bot.name}'>${bot.name}</button>`
-        ).join('');
-        botList.style.display = 'block';
-        header.style.display = 'block';
-    } else {
-        const noBotsMessage = document.getElementById('noBotsMessage');
-        noBotsMessage.style.display = 'block';
+        return response.ok ? response.json() : { "bots": [] };
+    } catch {
+        return { bots: [] }
     }
 }
