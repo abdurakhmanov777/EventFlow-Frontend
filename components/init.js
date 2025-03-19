@@ -12,8 +12,10 @@ import { addAnimation } from '../utils/animations.js';
 import { initTheme } from '../utils/theme.js';
 import { renderEditor } from './pages/editor/editor.js';
 
+// const animation_list = ['botList', 'botForm', 'account', 'language', 'theme']
 const tg = Telegram?.WebApp;
 let currentView = sessionStorage.getItem('page') || 'main';
+// let previousView = sessionStorage.getItem('previousPage') || null;
 
 const renderers = {
     main: renderMain,
@@ -28,11 +30,14 @@ const renderers = {
 };
 
 export function switchView(view) {
+    // previousView = currentView;
     currentView = view;
-    sessionStorage.setItem('page', view);
     render();
     tg.BackButton[currentView === 'main' ? 'hide' : 'show']();
     updateActiveButton(currentView);
+
+    sessionStorage.setItem('page', view);
+    // sessionStorage.setItem('previousPage', previousView);
 }
 
 function render() {
@@ -46,10 +51,12 @@ export const initializeApp = async () => {
     document.addEventListener('DOMContentLoaded', async () => {
         await initLocalization();
         renderSidebar();
+        // Telegram.WebApp.showAlert(sessionStorage.getItem('page'));
         switchView(currentView);
         tg.BackButton.onClick(() => {
             switchView(['account', 'language', 'theme'].includes(currentView) ? 'settings' : 'main');
-            if (currentView === 'settings') addAnimation('.page');
+            // if (animation_list.includes(previousView))
+            addAnimation('.page');
         });
     });
 };

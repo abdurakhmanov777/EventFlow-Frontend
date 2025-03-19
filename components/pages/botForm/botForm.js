@@ -1,5 +1,6 @@
 // import { mocksRender } from './chat/mocks.js';
 import { validateAndSubmitForm } from '../../../api/api.js';
+import { addAnimation } from '../../../utils/animations.js';
 import { switchView } from '../../init.js';
 
 export function renderBotForm() {
@@ -26,6 +27,7 @@ export function renderBotForm() {
 
     document.getElementById('backButton').addEventListener('click', () => {
         switchView('main');
+        addAnimation('.page');
     });
     document.getElementById('nextButton').addEventListener('click', () => {
         validateAndSubmitForm();

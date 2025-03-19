@@ -1,3 +1,4 @@
+import { addAnimation } from '../../../utils/animations.js';
 import { switchView } from '../../init.js';
 import { sidebar_passive } from '../../sidebar/sidebar.js';
 
@@ -24,8 +25,10 @@ export function renderMain() {
 
     document.getElementById('createBotButton').addEventListener('click', () => {
         switchView('botForm');
+        addAnimation('.full-page');
     });
     document.getElementById('myBotsButton').addEventListener('click', () => {
         switchView('botList');
+        addAnimation('.full-page');
     });
 }
