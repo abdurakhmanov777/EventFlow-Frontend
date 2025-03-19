@@ -13,7 +13,7 @@
 
     "botList": {
         "header" : "Created bots",
-        "noBots": "You have no bots yet"
+        "noBots": "You don't have any bots created"
     },
 
     "settings" : {
