@@ -61,23 +61,26 @@ export async function fetchBotList() {
         });
         const data = await response.json();
         updateBotList(data);
+        return data
     } catch (error) {
         console.error('Ошибка при загрузке списка ботов:', error);
-        document.getElementById('noBotsMessage').style.display = 'block';
-        document.getElementById('botListItems').style.display = 'none';
+        // document.getElementById('botListItems').style.display = 'none';
     }
 }
 
-function updateBotList(data) {
-    const botListItems = document.getElementById('botListItems')
-    const noBotsMessage = document.getElementById('noBotsMessage')
 
+function updateBotList(data) {
     if (data.bots?.length) {
-        botListItems.innerHTML = data.bots.map(bot => `<button class='bot-button'>${bot.name}</button>`).join('');
-        botListItems.style.display = 'block';
-        noBotsMessage.style.display = 'none';
+        const botList = document.getElementById('botListContainer');
+        const botListItems = document.getElementById('botListItems');
+        const header = document.querySelector('h5');
+        botListItems.innerHTML = data.bots.map(bot =>
+            `<button class='bot-button' id='${bot.name}'>${bot.name}</button>`
+        ).join('');
+        botList.style.display = 'block';
+        header.style.display = 'block';
     } else {
-        botListItems.style.display = 'none';
+        const noBotsMessage = document.getElementById('noBotsMessage');
         noBotsMessage.style.display = 'block';
     }
 }

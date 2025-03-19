@@ -10,6 +10,7 @@ import { updateActiveButton, renderSidebar } from './sidebar/sidebar.js';
 import { renderAccount } from './pages/account/account.js';
 import { addAnimation } from '../utils/animations.js';
 import { initTheme } from '../utils/theme.js';
+import { renderEditor } from './pages/editor/editor.js';
 
 const tg = Telegram?.WebApp;
 let currentView = sessionStorage.getItem('page') || 'main';
@@ -23,6 +24,7 @@ const renderers = {
     language: renderLanguage,
     theme: renderTheme,
     account: renderAccount,
+    editor: renderEditor,
 };
 
 export function switchView(view) {

@@ -29,6 +29,7 @@ export function renderBotForm() {
     });
     document.getElementById('nextButton').addEventListener('click', () => {
         validateAndSubmitForm();
+        switchView('editor');
         // Telegram.WebApp?.showAlert(data.botForm.successfull);
     });
 
