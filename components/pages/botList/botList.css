@@ -1,13 +1,11 @@
-/* #botList {
-    flex-direction: column;
-} */
-
 #botListContainer {
     background-color: var(--container-color);
     border-radius: 12px;
     width: 100%;
     display: flex;
     flex-direction: column;
+    overflow-y: auto;
+    scrollbar-width: none;
 }
 
 #botListItems {
