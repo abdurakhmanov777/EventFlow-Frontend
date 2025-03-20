@@ -37,7 +37,7 @@
     background-color: var(--dividing-line);
 }
 
-.icon {
+.icon, .iconNoBack {
     background-color: var(--accent-color);
     width: 34px;
     height: 34px;
@@ -49,6 +49,12 @@
     margin-right: 12px;
     flex-shrink: 0;
     color: var(--icon-color);
+}
+
+.iconNoBack {
+    background-color: transparent;
+    margin-bottom: 3px;
+    color: var(--text-color);
 }
 
 .content {

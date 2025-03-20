@@ -1,77 +1,15 @@
-#botList {
+/* #botList {
     flex-direction: column;
-    justify-content: flex-start;
-}
+} */
 
 #botListContainer {
     background-color: var(--container-color);
     border-radius: 12px;
     width: 100%;
     display: flex;
-    /* flex-direction: column; */
-    justify-content: center;
-    align-items: flex-start;
-    max-height: 100%;
-    overflow-y: auto;
-    position: relative;
-    padding: 20px;
-    box-sizing: border-box;
-    /* background-color: red; */
-    scrollbar-width: none;
+    flex-direction: column;
 }
 
 #botListItems {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    width: 100%;
-    padding: 0;
-    list-style-type: none;
-    margin: 0;
-    margin-top: 0;
-}
-
-.botListItems {
-    position: relative;
-    width: 100%;
-    padding: 0 20px;
-}
-
-.botListItems:not(:last-child)::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 1px;
     background-color: var(--container-color);
-}
-
-
-.bot-button {
-    width: 100%;
-    padding: 12px;
-    margin-bottom: 20px;
-    font-size: 16px;
-    color: var(--text-button-color);
-    background-color: (--accent-color);
-    /* background-color: transparent; */
-}
-
-.bot-button:last-child {
-    margin-bottom: 0; /* убираем отступ для последнего элемента */
-}
-
-
-.bot-button:hover {
-    filter: brightness(0.9);
-}
-
-.no-bots-message {
-    text-align: center;
-    font-size: 18px;
-    color: #777;
-    padding: 20px;
-    margin: 0;
 }

@@ -1,14 +1,14 @@
 import { fetchBotList } from "../../../api/api.js";
+import { icon_arrow, icon_bot } from "../../../img/icons.js";
 
 export function renderBotList() {
     const lang = localStorage.getItem('language') || 'ru';
     const data = JSON.parse(sessionStorage.getItem(`lang_${lang}`));
 
     document.querySelector('#root').innerHTML = `
-        <div id='botList' class='full-page'>
+        <div class='full-page'>
             <h5 id="botListHeader" style="display: none;">${data.botList.header}</h5>
             <div id='botListContainer' class='setting-list' style="display: none;">
-                <ul id='botListItems'></ul>
             </div>
             <p id='noBotsMessage' class='no-bots-message' style='display: none;'>${data.botList.noBots}</p>
         </div>
@@ -20,17 +20,32 @@ export function renderBotList() {
 async function loadBots() {
     const { bots } = await fetchBotList();
     const botListContainer = document.getElementById('botListContainer');
-    const botListItems = document.getElementById('botListItems');
     const header = document.getElementById('botListHeader');
     const noBotsMessage = document.getElementById('noBotsMessage');
 
+    const lang = localStorage.getItem('language') || 'ru';
+    const data = JSON.parse(sessionStorage.getItem(`lang_${lang}`));
+
     if (bots?.length) {
-        botListItems.innerHTML = bots.map(({ name }) => `
-            <button class='bot-button' id='${name}'>${name}</button>
+        botListContainer.innerHTML = bots.map(({ name }) => `
+            <button class='settings-item' id='${name}'>
+                <div class='iconNoBack'>
+                    ${icon_bot}
+                </div>
+                <div class='content'>
+                    <span id='textTheme' class='title'>
+                        ${name}
+                    </span>
+                    <span class='value'>
+                        ${data.botList.edit}
+                        ${icon_arrow}
+                    </span>
+                </div>
+            </button>
         `).join('');
 
         // Обработчик нажатий всех кнопок
-        document.querySelectorAll('.bot-button').forEach(button => {
+        document.querySelectorAll('.settings-item').forEach(button => {
             button.addEventListener('click', () => {
                 Telegram.WebApp.showAlert(`Бот ${button.id} был выбран!`);
             });
