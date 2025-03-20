@@ -6,7 +6,7 @@ export function renderBotList() {
     const data = JSON.parse(sessionStorage.getItem(`lang_${lang}`));
 
     document.querySelector('#root').innerHTML = `
-        <div id='botList'class='full-page'>
+        <div id='botList' class='full-page'>
             <h5 id="botListHeader" style="display: none;">${data.botList.header}</h5>
             <div id='botListContainer' class='setting-list' style="display: none;">
             </div>
