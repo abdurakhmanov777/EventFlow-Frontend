@@ -12,12 +12,6 @@ export async function loadTheme(theme) {
     tg.setBackgroundColor(headerColor);
 }
 
-
-// tg.showAlert(Telegram.WebApp.version)
-// Telegram.WebApp.setColorScheme("dark");
-// tg.showAlert(Telegram.WebApp.colorScheme);
-// Telegram.WebApp.colorScheme = "dark";
-
 export async function initTheme() {
     const theme = localStorage.getItem('theme') || 'system';
     loadTheme(theme);

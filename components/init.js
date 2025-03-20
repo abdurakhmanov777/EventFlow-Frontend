@@ -15,6 +15,7 @@ import { renderEditor } from './pages/editor/editor.js';
 // const animation_list = ['botList', 'botForm', 'account', 'language', 'theme']
 const tg = Telegram?.WebApp;
 let currentView = sessionStorage.getItem('page') || 'main';
+let pageSettings = sessionStorage.getItem('pageSettings') || {};
 // let previousView = sessionStorage.getItem('previousPage') || null;
 
 const renderers = {
@@ -26,24 +27,37 @@ const renderers = {
     language: renderLanguage,
     theme: renderTheme,
     account: renderAccount,
-    editor: renderEditor,
+    editor: (param) => renderEditor(param),
 };
 
-export function switchView(view) {
-    // previousView = currentView;
+export function switchView(view, param = {}) {
     currentView = view;
-    render();
-    tg.BackButton[currentView === 'main' ? 'hide' : 'show']();
+    pageSettings = param;
+    renderView();
+    toggleBackButton();
     updateActiveButton(currentView);
 
     sessionStorage.setItem('page', view);
-    // sessionStorage.setItem('previousPage', previousView);
+    // sessionStorage.setItem('pageSettings', JSON.stringify(param));
+
 }
 
-function render() {
-    (renderers[currentView] || renderMain)();
+function renderView() {
+    if (currentView === 'editor') {
+        (renderers[currentView])(pageSettings);
+    }
+    else {
+        (renderers[currentView] || renderMain)();
+    }
+
     const isMainView = ['main', 'subscription', 'settings'].includes(currentView);
     document.getElementById('topPanel').style.display = isMainView ? 'flex' : 'none';
+}
+
+function toggleBackButton() {
+    // Показать или скрыть кнопку назад в зависимости от текущего вида
+    const action = currentView === 'main' ? 'hide' : 'show';
+    tg.BackButton[action]();
 }
 
 export const initializeApp = async () => {
@@ -54,9 +68,15 @@ export const initializeApp = async () => {
         // Telegram.WebApp.showAlert(sessionStorage.getItem('page'));
         switchView(currentView);
         tg.BackButton.onClick(() => {
-            switchView(['account', 'language', 'theme'].includes(currentView) ? 'settings' : 'main');
-            // if (animation_list.includes(previousView))
+            const views = {
+                'account': 'settings',
+                'language': 'settings',
+                'theme': 'settings',
+                'editor': 'botList'
+            };
+            switchView(views[currentView] || 'main');
             addAnimation('.page');
         });
+
     });
 };

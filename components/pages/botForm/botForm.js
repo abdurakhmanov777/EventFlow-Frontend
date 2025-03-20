@@ -1,5 +1,5 @@
 // import { mocksRender } from './chat/mocks.js';
-import { validateAndSubmitForm } from '../../../api/api.js';
+import { sendBotData } from '../../../api/api.js';
 import { addAnimation } from '../../../utils/animations.js';
 import { switchView } from '../../init.js';
 
@@ -30,8 +30,7 @@ export function renderBotForm() {
         addAnimation('.page');
     });
     document.getElementById('nextButton').addEventListener('click', () => {
-        validateAndSubmitForm();
-        switchView('editor');
+        submitForm(data);
         // Telegram.WebApp?.showAlert(data.botForm.successfull);
     });
 
@@ -39,4 +38,42 @@ export function renderBotForm() {
     // document.getElementById('botApiInput').addEventListener('input', clearError);
     document.getElementById('botNameInput').addEventListener('focus', clearError);
     document.getElementById('botApiInput').addEventListener('focus', clearError);
+}
+
+
+async function submitForm(data) {
+    const botNameInput = document.getElementById('botNameInput');
+    const botApiInput = document.getElementById('botApiInput');
+
+    const name = botNameInput.value.trim();
+    const api = botApiInput.value.trim();
+
+    const apiRegex = /^.{5,}$/;
+
+    const errors = [];
+    if (name.length < 5) errors.push(data.botForm.error.name);
+    if (!api.match(apiRegex)) errors.push(data.botForm.error.api);
+
+    botNameInput.classList.toggle('error', name.length < 5);
+    botApiInput.classList.toggle('error', api.length < 5);
+
+    if (errors.length) {
+        return Telegram.WebApp.showAlert(`${data.botForm.error.incorrect}: ${errors.join(', ')}`);
+    }
+
+    const result = await sendBotData(name, api);
+    // Telegram.WebApp.showAlert(JSON.stringify(result));
+    if (result) {
+        if (result.status === true) {
+            switchView('editor', { 'api': api });
+            // Telegram.WebApp.showAlert(data.botForm.success.true);
+        } else {
+            const messageArr = [];
+            if (result.name) messageArr.push(data.botForm.success.name);
+            if (result.api) messageArr.push(data.botForm.success.api);
+            Telegram.WebApp.showAlert(`${data.botForm.success.false}${messageArr.join(', ')}`);
+        }
+    } else {
+        Telegram.WebApp.showAlert(data.botForm.unsuccess);
+    }
 }

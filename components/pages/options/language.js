@@ -8,7 +8,7 @@ export function renderLanguage() {
     document.querySelector('#root').innerHTML = '';
     document.querySelector('#root').insertAdjacentHTML('afterbegin', `
         <div id='languageSection' class='full-page'>
-            <h3>${data.settings.language.name}</h3>
+            <h2>${data.settings.language.name}</h2>
             <div class='settings-list'>
                 <label class='settings-option'>
                     <input type='radio' name='language' value='en'>

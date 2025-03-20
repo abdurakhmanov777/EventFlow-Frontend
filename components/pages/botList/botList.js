@@ -1,5 +1,6 @@
 import { fetchBotList } from "../../../api/api.js";
 import { icon_arrow, icon_bot } from "../../../img/icons.js";
+import { switchView } from "../../init.js";
 
 export function renderBotList() {
     const lang = localStorage.getItem('language') || 'ru';
@@ -7,7 +8,7 @@ export function renderBotList() {
 
     document.querySelector('#root').innerHTML = `
         <div id='botList' class='full-page'>
-            <h5 id="botListHeader" style="display: none;">${data.botList.header}</h5>
+            <h2 id="botListHeader" style="display: none;">${data.botList.header}</h2>
             <div id='botListContainer' class='setting-list' style="display: none;">
             </div>
             <p id='noBotsMessage' class='no-bots-message' style='display: none;'>${data.botList.noBots}</p>
@@ -18,7 +19,7 @@ export function renderBotList() {
 }
 
 async function loadBots() {
-    const { bots } = await fetchBotList();
+    const result = await fetchBotList();
     const botListContainer = document.getElementById('botListContainer');
     const header = document.getElementById('botListHeader');
     const noBotsMessage = document.getElementById('noBotsMessage');
@@ -26,8 +27,8 @@ async function loadBots() {
     const lang = localStorage.getItem('language') || 'ru';
     const data = JSON.parse(sessionStorage.getItem(`lang_${lang}`));
 
-    if (bots?.length) {
-        botListContainer.innerHTML = bots.map(({ name, api }) => `
+    if (result?.length) {
+        botListContainer.innerHTML = result.map(({ name, api }) => `
             <button class='settings-item' id='${name}' value='${api}'>
                 <div class='iconNoBack'>
                     ${icon_bot}
@@ -47,9 +48,7 @@ async function loadBots() {
         // Обработчик нажатий всех кнопок
         document.querySelectorAll('.settings-item').forEach(button => {
             button.addEventListener('click', () => {
-                Telegram.WebApp.showAlert(`
-                    Name: ${button.id}\nAPI: ${button.value}
-                `);
+                switchView('editor', { api: button.value });
             });
         });
 
