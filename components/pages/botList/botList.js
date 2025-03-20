@@ -27,8 +27,8 @@ async function loadBots() {
     const data = JSON.parse(sessionStorage.getItem(`lang_${lang}`));
 
     if (bots?.length) {
-        botListContainer.innerHTML = bots.map(({ name }) => `
-            <button class='settings-item' id='${name}'>
+        botListContainer.innerHTML = bots.map(({ name, api }) => `
+            <button class='settings-item' id='${name}' value='${api}'>
                 <div class='iconNoBack'>
                     ${icon_bot}
                 </div>
@@ -47,7 +47,9 @@ async function loadBots() {
         // Обработчик нажатий всех кнопок
         document.querySelectorAll('.settings-item').forEach(button => {
             button.addEventListener('click', () => {
-                Telegram.WebApp.showAlert(`Бот ${button.id} был выбран!`);
+                Telegram.WebApp.showAlert(`
+                    Name: ${button.id}\nAPI: ${button.value}
+                `);
             });
         });
 
