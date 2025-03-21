@@ -30,32 +30,27 @@ const renderers = {
     editor: (param) => renderEditor(param),
 };
 
-export function switchView(view, param = {}) {
+export function switchView(view, param = pageSettings) {
     currentView = view;
-    pageSettings = param;
-    renderView();
-    toggleBackButton();
-    updateActiveButton(currentView);
+    pageSettings = (typeof param === 'string') ? JSON.parse(param) : param;
 
+    sessionStorage.setItem('pageSettings', JSON.stringify(pageSettings));
     sessionStorage.setItem('page', view);
-    // sessionStorage.setItem('pageSettings', JSON.stringify(param));
 
+    (renderers[view] || renderMain)(pageSettings);
+
+    toggleTopPanel(view);
+    toggleBackButton();
+    updateActiveButton(view);
 }
 
-function renderView() {
-    if (currentView === 'editor') {
-        (renderers[currentView])(pageSettings);
-    }
-    else {
-        (renderers[currentView] || renderMain)();
-    }
-
-    const isMainView = ['main', 'subscription', 'settings'].includes(currentView);
-    document.getElementById('topPanel').style.display = isMainView ? 'flex' : 'none';
+function toggleTopPanel(view) {
+    const displayStyle = ['main', 'subscription', 'settings'].includes(view) ? 'flex' : 'none';
+    document.getElementById('topPanel').style.display = displayStyle;
 }
+
 
 function toggleBackButton() {
-    // Показать или скрыть кнопку назад в зависимости от текущего вида
     const action = currentView === 'main' ? 'hide' : 'show';
     tg.BackButton[action]();
 }
@@ -77,6 +72,5 @@ export const initializeApp = async () => {
             switchView(views[currentView] || 'main');
             addAnimation('.page');
         });
-
     });
 };
