@@ -14,7 +14,7 @@
     "botList": {
         "header" : "Created bots",
         "noBots": "You don't have any bots created",
-        "edit": "Change"
+        "settings": "Settings"
     },
 
     "settings" : {

@@ -38,7 +38,6 @@ async function loadBots() {
                         ${name}
                     </span>
                     <span class='value'>
-                        ${data.botList.edit}
                         ${icon_arrow}
                     </span>
                 </div>
@@ -48,7 +47,7 @@ async function loadBots() {
         // Обработчик нажатий всех кнопок
         document.querySelectorAll('.settings-item').forEach(button => {
             button.addEventListener('click', () => {
-                switchView('editor', { api: button.value });
+                switchView('editor', { name: button.id });
             });
         });
 
