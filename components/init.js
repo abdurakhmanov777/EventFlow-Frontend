@@ -15,7 +15,7 @@ import { renderEditor } from './pages/editor/editor.js';
 // const animation_list = ['botList', 'botForm', 'account', 'language', 'theme']
 const tg = Telegram?.WebApp;
 let currentView = sessionStorage.getItem('page') || 'main';
-let pageSettings = sessionStorage.getItem('pageSettings') || {};
+// let pageSettings = sessionStorage.getItem('pageSettings') || {};
 // let previousView = sessionStorage.getItem('previousPage') || null;
 
 const renderers = {
@@ -27,21 +27,24 @@ const renderers = {
     language: renderLanguage,
     theme: renderTheme,
     account: renderAccount,
-    editor: (param) => renderEditor(param),
 };
 
-export function switchView(view, param = pageSettings) {
+export function switchView(view, param = null) {
     currentView = view;
-    pageSettings = (typeof param === 'string') ? JSON.parse(param) : param;
 
-    sessionStorage.setItem('pageSettings', JSON.stringify(pageSettings));
-    sessionStorage.setItem('page', view);
-
-    (renderers[view] || renderMain)(pageSettings);
+    if (view === 'editor') {
+        const settings = param || JSON.parse(sessionStorage.getItem('pageSettings') || '{}');
+        renderEditor(settings);
+        sessionStorage.setItem('pageSettings', JSON.stringify(settings));
+    } else {
+        (renderers[view] || renderMain)();
+    }
 
     toggleTopPanel(view);
     toggleBackButton();
     updateActiveButton(view);
+
+    sessionStorage.setItem('page', view);
 }
 
 function toggleTopPanel(view) {
