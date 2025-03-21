@@ -38,6 +38,7 @@ async function loadBots() {
                         ${name}
                     </span>
                     <span class='value'>
+                        ${data.botList.edit}
                         ${icon_arrow}
                     </span>
                 </div>
