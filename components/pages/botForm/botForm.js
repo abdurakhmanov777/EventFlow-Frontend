@@ -65,7 +65,7 @@ async function submitForm(data) {
     // Telegram.WebApp.showAlert(JSON.stringify(result));
     if (result) {
         if (result.status === true) {
-            switchView('editor', { 'api': api });
+            switchView('editor', { 'name': name });
             // Telegram.WebApp.showAlert(data.botForm.success.true);
         } else {
             const messageArr = [];

@@ -8,7 +8,7 @@ export function renderEditor(param) {
     document.querySelector('#root').innerHTML = '';
     document.querySelector('#root').insertAdjacentHTML('afterbegin', `
         <div id='editorSection' class='full-page'>
-            <h2>${param?.api}</h2>
+            <h2>${param?.name}</h2>
         </div>
     `);
 }

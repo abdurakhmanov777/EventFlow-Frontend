@@ -23,7 +23,7 @@ async function loadLocalization(language) {
 }
 
 async function updateLocalization(data) {
-    document.querySelector('h3').textContent = data.settings.language.name;
+    document.querySelector('h2').textContent = data.settings.language.name;
     document.getElementById('mainBtn').textContent = data.sidebar.main;
     document.getElementById('subscriptionBtn').textContent = data.sidebar.subscription;
     document.getElementById('settingsBtn').textContent = data.sidebar.settings;
