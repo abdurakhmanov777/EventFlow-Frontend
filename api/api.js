@@ -2,38 +2,6 @@
 const BASE_URL = 'http://127.0.0.1:8000';
 const userId = Telegram.WebApp.initDataUnsafe.user?.id || 'unknown';
 
-// export async function sendBotData(name, api) {
-//     if (!userId) throw new Error('The ID is indefinite');
-
-//     try {
-//         const response = await fetch(`${BASE_URL}/bot/submit_bot_name`, {
-//             method: 'POST',
-//             headers: { 'Content-Type': 'application/json' },
-//             body: JSON.stringify({ user_id: userId, name, api })
-//         });
-//         if (!response.ok) throw new Error('Failed to submit bot data');
-//         return response.json();
-//     } catch {
-//         return
-//     }
-// }
-
-// export async function fetchBotList() {
-//     if (!userId) return;
-
-//     try {
-//         const response = await fetch(`${BASE_URL}/bot/get_bot_list`, {
-//             method: 'POST',
-//             headers: { 'Content-Type': 'application/json' },
-//             body: JSON.stringify({ user_id: userId })
-//         });
-//         if (!response.ok) throw new Error('Failed to submit bot data');
-//         return response.json();
-//     } catch {
-//         return
-//     }
-// }
-
 async function apiRequest(endpoint, data = {}) {
     if (!userId) throw new Error('The ID is indefinite');
     try {
