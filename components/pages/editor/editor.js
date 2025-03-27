@@ -13,7 +13,7 @@ export function renderEditor(param) {
     document.querySelector('#root').insertAdjacentHTML('afterbegin', `
         <div id='editorSection' class='full-page'>
             <h2>${param?.name}</h2>
-            <div id='botListContainer' class='setting-list'">
+            <div id='botListContainer' class='settings-list'">
                 <button id='toggleStatusBot' class='settings-item' value='${param?.api}'>
                     <div class='icon'>
                         ${status.icon}

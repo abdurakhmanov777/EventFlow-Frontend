@@ -10,7 +10,7 @@ export function renderBotList() {
     document.querySelector('#root').innerHTML = `
         <div id='botList' class='full-page'>
             <h2 id="botListHeader" style="display: none;">${data.botList.header}</h2>
-            <div id='botListContainer' class='setting-list' style="display: none;">
+            <div id='botListContainer' class='settings-list' style="display: none;">
             </div>
             <p id='noBotsMessage' class='no-bots-message' style='display: none;'>${data.botList.noBots}</p>
         </div>

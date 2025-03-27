@@ -1,12 +1,12 @@
 import { toggleBot } from '../../../api/api.js';
 import { icon_checkmark } from '../../../img/icons.js';
-import { loadTheme } from '../../../utils/theme.js';
+import { activation_check } from '../../../utils/bot.js';
 
 export function renderBotEnable(param) {
-    let bot = sessionStorage.getItem('bot') || 'off';
     const lang = localStorage.getItem('language') || 'ru';
     const data = JSON.parse(sessionStorage.getItem(`lang_${lang}`));
-
+    const status = activation_check(data, param.status).var;
+    // Telegram.WebApp.showAlert(status)
     document.querySelector('#root').innerHTML = '';
     document.querySelector('#root').insertAdjacentHTML('afterbegin', `
         <div id='themeSection' class='full-page'>
@@ -33,7 +33,7 @@ export function renderBotEnable(param) {
             </div>
         </div>
     `);
-    updateBotSelection(bot, false);
+    updateBotSelection(status, false);
 
     function filterOptionsByName(name) {
         const options = document.querySelectorAll('.settings-option');
@@ -51,7 +51,7 @@ export function renderBotEnable(param) {
             updateBotSelection(e.target.value, true);
         })
     );
-    async function updateBotSelection(bot, flag) {
+    async function updateBotSelection(status, flag) {
         const radioButtons = document.querySelectorAll("input[name='bot']");
         radioButtons.forEach(radio => {
             const label = radio.closest('.settings-option');
@@ -59,7 +59,7 @@ export function renderBotEnable(param) {
             checkmark.style.display = 'none'; // скрыть checkmark
         });
 
-        const selectedRadio = document.querySelector(`input[name='bot'][value='${bot}']`);
+        const selectedRadio = document.querySelector(`input[name='bot'][value='${status}']`);
         if (selectedRadio) {
             const selectedLabel = selectedRadio.closest('.settings-option');
             const checkmark = selectedLabel.querySelector('.checkmark');
@@ -67,7 +67,7 @@ export function renderBotEnable(param) {
         };
         // if (flag) Telegram.WebApp.showAlert(bot)
         if (flag) {
-            const result = await toggleBot(param.api, bot);
+            const result = await toggleBot(param.api, status);
             if (result) {
                 sessionStorage.setItem('pageSettings', JSON.stringify(result));
             }
