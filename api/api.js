@@ -43,6 +43,7 @@ async function apiRequest(endpoint, data = {}) {
             body: JSON.stringify({ user_id: userId, ...data })
         });
         if (!response.ok) throw new Error(`Failed to ${endpoint}`);
+        // Telegram.WebApp.showAlert(JSON.stringify(response))
         return response.json();
     } catch {
         return;
@@ -50,4 +51,5 @@ async function apiRequest(endpoint, data = {}) {
 }
 
 export const sendBotData = (name, api) => apiRequest('create_new_bot', { name, api });
+export const toggleBot = (api, value) => apiRequest('toggle_bot', { api, value });
 export const fetchBotList = () => apiRequest('get_bot_list');

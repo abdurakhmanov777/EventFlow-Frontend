@@ -1,5 +1,6 @@
 import { fetchBotList } from "../../../api/api.js";
 import { icon_arrow, icon_bot } from "../../../img/icons.js";
+import { activation_check } from "../../../utils/bot.js";
 import { switchView } from "../../init.js";
 
 export function renderBotList() {
@@ -28,10 +29,14 @@ async function loadBots() {
     const data = JSON.parse(sessionStorage.getItem(`lang_${lang}`));
 
     if (result?.length) {
-        botListContainer.innerHTML = result.map(({ name, api, status }) => `
+        // Telegram.WebApp.showAlert(JSON.stringify(data));
+        botListContainer.innerHTML = result.map(({ name, api, status }) => {
+            // Telegram.WebApp.showAlert(status)
+            const updatedStatus = activation_check(data, status);
+            return `
             <button class='settings-item' id='${name}' value='${JSON.stringify({ api, status })}'>
-                <div class='iconNoBack'>
-                    ${icon_bot}
+                <div class='icon'>
+                    ${updatedStatus.icon}
                 </div>
                 <div class='content'>
                     <span id='textTheme' class='title'>
@@ -43,7 +48,8 @@ async function loadBots() {
                     </span>
                 </div>
             </button>
-        `).join('');
+            `;
+        }).join('');
 
         // Обработчик нажатий всех кнопок
         document.querySelectorAll('.settings-item').forEach(button => {

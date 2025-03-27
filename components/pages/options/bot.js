@@ -1,3 +1,4 @@
+import { toggleBot } from '../../../api/api.js';
 import { icon_checkmark } from '../../../img/icons.js';
 import { loadTheme } from '../../../utils/theme.js';
 
@@ -32,7 +33,7 @@ export function renderBotEnable(param) {
             </div>
         </div>
     `);
-    updateBotSelection(bot);
+    updateBotSelection(bot, false);
 
     function filterOptionsByName(name) {
         const options = document.querySelectorAll('.settings-option');
@@ -47,10 +48,10 @@ export function renderBotEnable(param) {
         option.addEventListener('change', e => {
             // loadTheme(e.target.value);
             sessionStorage.setItem('bot', e.target.value);
-            updateBotSelection(e.target.value);
+            updateBotSelection(e.target.value, true);
         })
     );
-    async function updateBotSelection(bot) {
+    async function updateBotSelection(bot, flag) {
         const radioButtons = document.querySelectorAll("input[name='bot']");
         radioButtons.forEach(radio => {
             const label = radio.closest('.settings-option');
@@ -63,6 +64,13 @@ export function renderBotEnable(param) {
             const selectedLabel = selectedRadio.closest('.settings-option');
             const checkmark = selectedLabel.querySelector('.checkmark');
             checkmark.style.display = 'inline';
+        };
+        // if (flag) Telegram.WebApp.showAlert(bot)
+        if (flag) {
+            const result = await toggleBot(param.api, bot);
+            if (result) {
+                sessionStorage.setItem('pageSettings', JSON.stringify(result));
+            }
         }
     }
 }
