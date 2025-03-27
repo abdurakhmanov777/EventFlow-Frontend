@@ -11,6 +11,7 @@ import { renderAccount } from './pages/account/account.js';
 import { addAnimation } from '../utils/animations.js';
 import { initTheme } from '../utils/theme.js';
 import { renderEditor } from './pages/editor/editor.js';
+import { renderBotEnable } from './pages/options/bot.js';
 
 // const animation_list = ['botList', 'botForm', 'account', 'language', 'theme']
 const tg = Telegram?.WebApp;
@@ -22,6 +23,8 @@ const renderers = {
     main: renderMain,
     botForm: renderBotForm,
     botList: renderBotList,
+    editor: renderEditor,
+    botEnable: renderBotEnable,
     subscription: renderSubscription,
     settings: renderSettings,
     language: renderLanguage,
@@ -32,9 +35,9 @@ const renderers = {
 export function switchView(view, param = null) {
     currentView = view;
 
-    if (view === 'editor') {
+    if (['editor', 'botEnable'].includes(view)) {
         const settings = param || JSON.parse(sessionStorage.getItem('pageSettings') || '{}');
-        renderEditor(settings);
+        renderers[view](settings);
         sessionStorage.setItem('pageSettings', JSON.stringify(settings));
     } else {
         (renderers[view] || renderMain)();
@@ -70,7 +73,8 @@ export const initializeApp = async () => {
                 'account': 'settings',
                 'language': 'settings',
                 'theme': 'settings',
-                'editor': 'botList'
+                'editor': 'botList',
+                'botEnable': 'editor'
             };
             switchView(views[currentView] || 'main');
             addAnimation('.page');

@@ -17,6 +17,14 @@
         "edit": "Edit"
     },
 
+    "editor": {
+        "status": {
+            "name" : "Bot Status",
+            "on" : "Enabled",
+            "off" : "Disabled"
+        }
+    },
+
     "settings" : {
         "account": {
             "name": "Account",

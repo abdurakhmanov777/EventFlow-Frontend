@@ -28,8 +28,8 @@ async function loadBots() {
     const data = JSON.parse(sessionStorage.getItem(`lang_${lang}`));
 
     if (result?.length) {
-        botListContainer.innerHTML = result.map(({ name, api }) => `
-            <button class='settings-item' id='${name}' value='${api}'>
+        botListContainer.innerHTML = result.map(({ name, api, status }) => `
+            <button class='settings-item' id='${name}' value='${JSON.stringify({ api, status })}'>
                 <div class='iconNoBack'>
                     ${icon_bot}
                 </div>
@@ -48,9 +48,15 @@ async function loadBots() {
         // Обработчик нажатий всех кнопок
         document.querySelectorAll('.settings-item').forEach(button => {
             button.addEventListener('click', () => {
-                switchView('editor', { name: button.id });
+                const { api, status } = JSON.parse(button.value);
+                switchView('editor', {
+                    name: button.id,
+                    api,
+                    status,
+                });
             });
         });
+
 
         [botListContainer, header].forEach(el => el.style.display = 'block');
         noBotsMessage.style.display = 'none';
