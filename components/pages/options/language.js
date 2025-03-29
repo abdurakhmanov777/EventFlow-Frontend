@@ -1,3 +1,4 @@
+import { toggleLang } from '../../../api/api.js';
 import { icon_checkmark } from '../../../img/icons.js';
 import { editLocalization } from '../../../utils/localization.js';
 
@@ -49,6 +50,7 @@ export function renderLanguage() {
             editLocalization(e.target.value).then(() => {
                 return updateLanguageSelection(e.target.value);
             });
+            // toggleLang(e.target.value);
         })
     );
     async function updateLanguageSelection(language) {
