@@ -10,7 +10,7 @@ import { updateActiveButton, renderSidebar } from './sidebar/sidebar.js';
 import { renderAccount } from './pages/account/account.js';
 import { addAnimation } from '../utils/animations.js';
 import { initTheme } from '../utils/theme.js';
-import { renderEditor } from './pages/editor/editor.js';
+import { renderSettingsBot } from './pages/settingsBot/settingsBot.js';
 import { renderBotEnable } from './pages/options/bot.js';
 
 // const animation_list = ['botList', 'botForm', 'account', 'language', 'theme']
@@ -23,7 +23,7 @@ const renderers = {
     main: renderMain,
     botForm: renderBotForm,
     botList: renderBotList,
-    editor: renderEditor,
+    settingsBot: renderSettingsBot,
     botEnable: renderBotEnable,
     subscription: renderSubscription,
     settings: renderSettings,
@@ -35,7 +35,7 @@ const renderers = {
 export function switchView(view, param = null) {
     currentView = view;
 
-    if (['editor', 'botEnable'].includes(view)) {
+    if (['settingsBot', 'botEnable'].includes(view)) {
         const settings = param || JSON.parse(sessionStorage.getItem('pageSettings') || '{}');
         renderers[view](settings);
         sessionStorage.setItem('pageSettings', JSON.stringify(settings));
@@ -73,8 +73,8 @@ export const initializeApp = async () => {
                 'account': 'settings',
                 'language': 'settings',
                 'theme': 'settings',
-                'editor': 'botList',
-                'botEnable': 'editor'
+                'settingsBot': 'botList',
+                'botEnable': 'settingsBot'
             };
             switchView(views[currentView] || 'main');
             addAnimation('.page');

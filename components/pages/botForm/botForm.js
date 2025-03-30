@@ -64,7 +64,7 @@ async function submitForm(data) {
     const result = await sendBotData(name, api);
     if (result) {
         if (result.status === true) {
-            switchView('editor', {
+            switchView('settingsBot', {
                 name: name,
                 api: api,
             });

@@ -10,12 +10,12 @@ export function renderBotEnable(param) {
     document.querySelector('#root').innerHTML = '';
     document.querySelector('#root').insertAdjacentHTML('afterbegin', `
         <div id='themeSection' class='full-page'>
-            <h2>${data?.editor.status.name}</h2>
+            <h2>${data?.settingsBot.status.name}</h2>
             <div class='settings-list'>
                 <label class='settings-option'>
                     <input type='radio' name='bot' value='on'>
                     <div class='text'>
-                        <span id='textThemeSystem'>${data?.editor.status.on}</span>
+                        <span id='textThemeSystem'>${data?.settingsBot.status.on}</span>
                     </div>
                     <i class='checkmark'>
                         ${icon_checkmark}
@@ -24,7 +24,7 @@ export function renderBotEnable(param) {
                 <label class='settings-option'>
                     <input type='radio' name='bot' value='off'>
                     <div class='text'>
-                        <span id='textThemeDark'>${data?.editor.status.off}</span>
+                        <span id='textThemeDark'>${data?.settingsBot.status.off}</span>
                     </div>
                     <i class='checkmark'>
                         ${icon_checkmark}

@@ -17,11 +17,20 @@
         "edit": "Edit"
     },
 
-    "editor": {
+    "settingsBot": {
         "status": {
             "name" : "Bot Status",
             "on" : "Enabled",
             "off" : "Disabled"
+        },
+        "editor": {
+            "name" : "Editor",
+            "edit" : "Edit"
+        },
+        "delete": {
+            "name": "Delete",
+            "confirm": "To remove the bot, click OK",
+            "success": "The bot is successfully removed"
         }
     },
 
