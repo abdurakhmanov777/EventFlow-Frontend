@@ -1,4 +1,4 @@
-import { toggleLang } from '../../../api/api.js';
+// import { toggleLang } from '../../../api/api.js';
 import { icon_checkmark } from '../../../img/icons.js';
 import { editLocalization } from '../../../utils/localization.js';
 
