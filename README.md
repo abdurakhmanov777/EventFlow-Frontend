@@ -1,4 +1,4 @@
-# MultiBot-Frontend
+# EventFlow-Frontend
 
 ## Описание
 
