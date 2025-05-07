@@ -63,21 +63,29 @@ function toggleBackButton() {
 
 export const initializeApp = async () => {
     await initTheme();
-    document.addEventListener('DOMContentLoaded', async () => {
+
+    const start = async () => {
         await initLocalization();
         renderSidebar();
-        // Telegram.WebApp.showAlert(sessionStorage.getItem('page'));
         switchView(currentView);
-        tg.BackButton.onClick(() => {
-            const views = {
-                'account': 'settings',
-                'language': 'settings',
-                'theme': 'settings',
-                'settingsBot': 'botList',
-                'botEnable': 'settingsBot'
-            };
-            switchView(views[currentView] || 'main');
-            addAnimation('.page');
-        });
-    });
+        if (tg?.BackButton?.onClick) {
+            tg.BackButton.onClick(() => {
+                const views = {
+                    'account': 'settings',
+                    'language': 'settings',
+                    'theme': 'settings',
+                    'settingsBot': 'botList',
+                    'botEnable': 'settingsBot'
+                };
+                switchView(views[currentView] || 'main');
+                addAnimation('.page');
+            });
+        }
+    };
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', start);
+    } else {
+        await start();
+    }
 };
