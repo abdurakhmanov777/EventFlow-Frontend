@@ -95,11 +95,11 @@ export function renderSettings() {
     `);
     document.getElementById('languageToggleButton').addEventListener('click', () => {
         switchView('language');
-        addAnimation('.full-page');
+        addAnimation('.full-page', 'short_animation_up');
     });
     document.getElementById('themeToggleButton').addEventListener('click', () => {
         switchView('theme');
-        addAnimation('.full-page');
+        addAnimation('.full-page', 'short_animation_up');
     });
     document.getElementById('contact_admin').addEventListener('click', function() {
         Telegram?.WebApp.openTelegramLink('https://t.me/abdurakhmanov777');
@@ -109,6 +109,6 @@ export function renderSettings() {
     });
     document.getElementById('accountBtn').addEventListener('click', () => {
         switchView('account');
-        addAnimation('.full-page');
+        addAnimation('.full-page', 'short_animation_up');
     });
 }

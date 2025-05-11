@@ -1,6 +1,6 @@
 // import { mocksRender } from './chat/mocks.js';
 import { sendBotData } from '../../../api/api.js';
-import { addAnimation } from '../../../utils/animations.js';
+// import { addAnimation } from '../../../utils/animations.js';
 import { switchView } from '../../init.js';
 
 export function renderBotForm() {
@@ -48,10 +48,10 @@ async function submitForm(data) {
     const name = botNameInput.value.trim();
     const api = botApiInput.value.trim();
 
-    const apiRegex = /^.{5,}$/;
+    const apiRegex = /\d{10}:[\w-]{35}/g;
 
     const errors = [];
-    if (name.length < 5) errors.push(data.botForm.error.name);
+    if (name.length < 2) errors.push(data.botForm.error.name);
     if (!api.match(apiRegex)) errors.push(data.botForm.error.api);
 
     botNameInput.classList.toggle('error', name.length < 5);

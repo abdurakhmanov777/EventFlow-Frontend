@@ -61,16 +61,28 @@ body, #root {
     margin-top: 60px;
 }
 
-.page.animate {
-    animation: slideOut 0.1s forwards;
-}
-
 .full-page {
     height: calc(100% - 35px);
     margin-top: 15px;
 }
 
-.full-page.animate {
+button {
+    border: none;
+    border-radius: 8px;
+    height: 50px;
+    width: 48%;
+    font-size: 18px;
+    font-weight: bold;
+    color: var(--text-button-color);
+    background-color: var(--accent-color);
+}
+
+
+.short_animation_down {
+    animation: slideOut 0.1s forwards;
+}
+
+.short_animation_up {
     animation: slideIn 0.1s forwards;
 }
 
@@ -94,43 +106,4 @@ body, #root {
         opacity: 1;
         transform: translateY(0);
     }
-}
-
-input {
-    width: 100%;
-    padding: 12px;
-    margin-bottom: 15px;
-    border: 1px solid silver;
-    border-radius: 8px;
-    font-size: 16px;
-    outline: none;
-}
-
-input:focus {
-    outline: 2px solid var(--input-focus-color);
-}
-
-input.error {
-    outline: 2px solid var(--input-error-color);
-}
-
-button {
-    border: none;
-    border-radius: 8px;
-    height: 50px;
-    width: 48%;
-    font-size: 18px;
-    font-weight: bold;
-    color: var(--text-button-color);
-    background-color: var(--accent-color);
-}
-
-.center-message {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    font-size: 24px;
-    color: red;
-    text-align: center;
 }

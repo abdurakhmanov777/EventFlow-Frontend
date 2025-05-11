@@ -21,3 +21,21 @@
 #botForm button {
     width: 100%;
 }
+
+input:focus {
+    outline: 2px solid var(--input-focus-color);
+}
+
+input.error {
+    outline: 2px solid var(--input-error-color);
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid silver;
+    border-radius: 8px;
+    font-size: 16px;
+    outline: none;
+}
