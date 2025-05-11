@@ -28,7 +28,7 @@
             "edit" : "Edit"
         },
         "link": {
-            "name" : "Link to the bot",
+            "name" : "Link to bot",
             "open" : "Open"
         },
         "delete": {
