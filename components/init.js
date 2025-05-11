@@ -1,5 +1,5 @@
 import { initLocalization } from '../utils/localization.js';
-import { renderBotForm } from './pages/botForm/botForm.js';
+import { renderCreateBot } from './pages/createBot/createBot.js';
 import { renderBotList } from './pages/botList/botList.js';
 import { renderMain } from './pages/main/main.js';
 import { renderSubscription } from './pages/subscription/subscription.js';
@@ -13,7 +13,7 @@ import { initTheme } from '../utils/theme.js';
 import { renderSettingsBot } from './pages/settingsBot/settingsBot.js';
 import { renderBotEnable } from './pages/options/bot.js';
 
-// const animation_list = ['botList', 'botForm', 'account', 'language', 'theme']
+// const animation_list = ['botList', 'createBot', 'account', 'language', 'theme']
 const tg = Telegram?.WebApp;
 let currentView = sessionStorage.getItem('page') || 'main';
 // let pageSettings = sessionStorage.getItem('pageSettings') || {};
@@ -21,7 +21,7 @@ let currentView = sessionStorage.getItem('page') || 'main';
 
 const renderers = {
     main: renderMain,
-    botForm: renderBotForm,
+    createBot: renderCreateBot,
     botList: renderBotList,
     settingsBot: renderSettingsBot,
     botEnable: renderBotEnable,

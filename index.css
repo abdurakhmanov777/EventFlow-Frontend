@@ -1,9 +1,8 @@
 @import url("components/init.css");
 @import url("components/pages/main/main.css");
-@import url('components/pages/botForm/botForm.css');
+@import url('components/pages/createBot/createBot.css');
 @import url("components/sidebar/sidebar.css");
 @import url("components/sidebar/topPanel.css");
 @import url("components/pages/botList/botList.css");
-@import url("components/pages/botForm/botForm.css");
 @import url("components/pages/settings/settings.css");
 @import url("components/pages/settingsBot/settingsBot.css");

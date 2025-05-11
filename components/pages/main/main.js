@@ -24,7 +24,7 @@ export function renderMain() {
     `);
 
     document.getElementById('createBotButton').addEventListener('click', () => {
-        switchView('botForm');
+        switchView('createBot');
         addAnimation('.full-page', 'short_animation_up');
     });
     document.getElementById('myBotsButton').addEventListener('click', () => {

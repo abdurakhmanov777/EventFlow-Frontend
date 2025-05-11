@@ -64,7 +64,7 @@
             "value": "Телеграм"
         }
     },
-    "botForm": {
+    "createBot": {
         "placeholder": {
             "name": "Имя бота",
             "api": "Bot API"

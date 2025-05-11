@@ -40,7 +40,7 @@ export function updateActiveButton(page) {
     const pages = {
         main: 'mainBtn',
         botList: 'mainBtn',
-        botForm: 'mainBtn',
+        createBot: 'mainBtn',
         settings: 'settingsBtn',
         language: 'settingsBtn',
         theme: 'settingsBtn',

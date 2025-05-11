@@ -65,7 +65,7 @@
         }
     },
 
-    "botForm": {
+    "createBot": {
         "placeholder": {
             "name": "Bot Name",
             "api": "Bot API"
