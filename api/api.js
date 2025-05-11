@@ -12,7 +12,7 @@ async function apiRequest(endpoint, data = {}) {
             body: JSON.stringify({ user_id: userId, ...data })
         });
         if (!response.ok) throw new Error(`Failed to ${endpoint}`);
-        // Telegram.WebApp.showAlert(JSON.stringify(response))
+
         return response.json();
     } catch {
         return;

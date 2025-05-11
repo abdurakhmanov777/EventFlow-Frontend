@@ -1,5 +1,5 @@
 import { deleteBot } from '../../../api/api.js';
-import { icon_arrow, icon_delete, icon_editor } from '../../../img/icons.js';
+import { icon_arrow, icon_delete, icon_editor, icon_link } from '../../../img/icons.js';
 import { activation_check } from '../../../utils/bot.js';
 import { switchView } from '../../init.js';
 
@@ -43,6 +43,20 @@ export function renderSettingsBot(param) {
                         </span>
                     </div>
                 </button>
+                <button id='linkBot' class='settings-item'>
+                    <div class='icon'>
+                        ${icon_link}
+                    </div>
+                    <div class='content'>
+                        <span id='textTheme' class='title'>
+                            ${data?.settingsBot.link.name}
+                        </span>
+                        <span class='value'>
+                            ${data?.settingsBot.link.open}
+                            ${icon_arrow}
+                        </span>
+                    </div>
+                </button>
             </div>
             <div id='botListContainer' class='settings-list'">
                 <button id='deleteBot' class='settings-item' value='${param?.api}'>
@@ -62,6 +76,12 @@ export function renderSettingsBot(param) {
             </div>
         </div>
     `);
+    // Telegram.WebApp.showAlert(JSON.stringify(param));
+
+    document.getElementById('linkBot').addEventListener('click', function() {
+        Telegram?.WebApp.openTelegramLink(`https://t.me/${param?.link}`);
+        // Telegram?.WebApp.showAlert(JSON.stringify(param));
+    });
 
     document.getElementById('toggleStatusBot').addEventListener('click', function() {
         // Telegram.WebApp.showAlert(this.value);

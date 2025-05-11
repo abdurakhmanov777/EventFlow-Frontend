@@ -63,16 +63,20 @@ async function submitForm(data) {
 
     const result = await sendBotData(name, api);
     if (result) {
+        // Telegram.WebApp.showAlert(result.link);
         if (result.status === true) {
             switchView('settingsBot', {
                 name: name,
                 api: api,
+                link: result.link,
             });
             // Telegram.WebApp.showAlert(data.botForm.success.true);
+        } else if (!result.api && !result.name) {
+            Telegram.WebApp.showAlert(data.botForm.error.invalid);
         } else {
             const messageArr = [];
-            if (result.name) messageArr.push(data.botForm.success.name);
-            if (result.api) messageArr.push(data.botForm.success.api);
+            if (result.name) messageArr.push(data.botForm.error.name);
+            if (result.api) messageArr.push(data.botForm.error.api);
             Telegram.WebApp.showAlert(`${data.botForm.success.false}${messageArr.join(', ')}`);
         }
     } else {

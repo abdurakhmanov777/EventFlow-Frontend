@@ -27,6 +27,10 @@
             "name" : "Editor",
             "edit" : "Edit"
         },
+        "link": {
+            "name" : "Link to the bot",
+            "open" : "Open"
+        },
         "delete": {
             "name": "Delete",
             "confirm": "To remove the bot, click OK",
@@ -72,8 +76,9 @@
         },
         "error": {
             "incorrect": "Incorrect input",
-            "name": "bot name",
-            "api": "bot API"
+            "name": "name",
+            "api": "API",
+            "invalid": "Such an API does not exist, or it is invalid"
         },
         "success": {
             "true": "The data has been sent successy",

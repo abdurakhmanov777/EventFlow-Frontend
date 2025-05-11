@@ -8,10 +8,10 @@ export async function renderBotList() {
     const data = JSON.parse(sessionStorage.getItem(`lang_${lang}`));
     const result = await fetchBotList();
 
-    const botItems = result?.length ? result.map(({ name, api, status }) => {
+    const botItems = result?.length ? result.map(({ name, api, link, status }) => {
         const updatedStatus = activation_check(data, status);
         return `
-            <button class='settings-item' id='${name}' value='${JSON.stringify({ api, status })}'>
+            <button class='settings-item' id='${name}' value='${JSON.stringify({ api, link, status })}'>
                 <div class='icon'>
                     ${updatedStatus.icon}
                 </div>
@@ -40,11 +40,12 @@ export async function renderBotList() {
 
     document.querySelectorAll('.settings-item').forEach(button => {
         button.addEventListener('click', () => {
-            const { api, status } = JSON.parse(button.value);
+            const { api, link, status } = JSON.parse(button.value);
             switchView('settingsBot', {
                 name: button.id,
-                api,
-                status,
+                link: link,
+                api: api,
+                status: status,
             });
         });
     });
