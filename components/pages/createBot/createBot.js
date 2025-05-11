@@ -1,6 +1,6 @@
 // import { mocksRender } from './chat/mocks.js';
 import { sendBotData } from '../../../api/api.js';
-// import { addAnimation } from '../../../utils/animations.js';
+import { addAnimation } from '../../../utils/animations.js';
 import { switchView } from '../../init.js';
 
 export function renderCreateBot() {
@@ -27,7 +27,7 @@ export function renderCreateBot() {
 
     document.getElementById('backButton').addEventListener('click', () => {
         switchView('main');
-        addAnimation('.page');
+        addAnimation('.page', 'short_animation_down');
     });
     document.getElementById('nextButton').addEventListener('click', () => {
         submitForm(data);

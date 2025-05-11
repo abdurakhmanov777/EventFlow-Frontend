@@ -78,7 +78,7 @@ export const initializeApp = async () => {
                     'botEnable': 'settingsBot'
                 };
                 switchView(views[currentView] || 'main');
-                addAnimation('.page');
+                addAnimation('.page', 'short_animation_down');
             });
         }
     };
