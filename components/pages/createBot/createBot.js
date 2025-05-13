@@ -29,9 +29,14 @@ export function renderCreateBot() {
         switchView('main');
         addAnimation('.page', 'short_animation_down');
     });
-    document.getElementById('nextButton').addEventListener('click', () => {
-        submitForm(data);
-        // Telegram.WebApp?.showAlert(data.createBot.successfull);
+    document.getElementById('nextButton').addEventListener('click', async () => {
+        const button = document.getElementById('nextButton');
+        button.disabled = true;
+        try {
+            await submitForm(data);
+        } finally {
+            button.disabled = false;
+        }
     });
 
     // document.getElementById('botNameInput').addEventListener('input', clearError);
