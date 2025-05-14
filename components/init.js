@@ -13,11 +13,8 @@ import { initTheme } from '../utils/theme.js';
 import { renderSettingsBot } from './pages/settingsBot/settingsBot.js';
 import { renderBotEnable } from './pages/options/bot.js';
 
-// const animation_list = ['botList', 'createBot', 'account', 'language', 'theme']
 const tg = Telegram?.WebApp;
 let currentView = sessionStorage.getItem('page') || 'main';
-// let pageSettings = sessionStorage.getItem('pageSettings') || {};
-// let previousView = sessionStorage.getItem('previousPage') || null;
 
 const renderers = {
     main: renderMain,

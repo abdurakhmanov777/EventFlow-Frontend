@@ -63,7 +63,7 @@ export function renderTheme() {
         radioButtons.forEach(radio => {
             const label = radio.closest('.settings-option');
             const checkmark = label.querySelector('.checkmark');
-            checkmark.style.display = 'none'; // скрыть checkmark
+            checkmark.style.display = 'none';
         });
 
         const selectedRadio = document.querySelector(`input[name='theme'][value='${theme}']`);

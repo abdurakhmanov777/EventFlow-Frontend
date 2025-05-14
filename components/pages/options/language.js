@@ -1,4 +1,3 @@
-// import { toggleLang } from '../../../api/api.js';
 import { icon_checkmark } from '../../../img/icons.js';
 import { editLocalization } from '../../../utils/localization.js';
 
@@ -50,7 +49,6 @@ export function renderLanguage() {
             editLocalization(e.target.value).then(() => {
                 return updateLanguageSelection(e.target.value);
             });
-            // toggleLang(e.target.value);
         })
     );
     async function updateLanguageSelection(language) {
@@ -58,7 +56,7 @@ export function renderLanguage() {
         radioButtons.forEach(radio => {
             const label = radio.closest('.settings-option');
             const checkmark = label.querySelector('.checkmark');
-            checkmark.style.display = 'none'; // скрыть checkmark
+            checkmark.style.display = 'none';
         });
 
         const selectedRadio = document.querySelector(`input[name='language'][value='${language}']`);

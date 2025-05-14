@@ -6,7 +6,7 @@ export function renderBotEnable(param) {
     const lang = localStorage.getItem('language') || 'ru';
     const data = JSON.parse(sessionStorage.getItem(`lang_${lang}`));
     const status = activation_check(data, param.status).var;
-    // Telegram.WebApp.showAlert(status)
+
     document.querySelector('#root').innerHTML = '';
     document.querySelector('#root').insertAdjacentHTML('afterbegin', `
         <div id='themeSection' class='full-page'>
@@ -46,7 +46,6 @@ export function renderBotEnable(param) {
 
     botOptions.forEach(option =>
         option.addEventListener('change', e => {
-            // loadTheme(e.target.value);
             sessionStorage.setItem('bot', e.target.value);
             updateBotSelection(e.target.value, true);
         })
@@ -56,7 +55,7 @@ export function renderBotEnable(param) {
         radioButtons.forEach(radio => {
             const label = radio.closest('.settings-option');
             const checkmark = label.querySelector('.checkmark');
-            checkmark.style.display = 'none'; // скрыть checkmark
+            checkmark.style.display = 'none';
         });
 
         const selectedRadio = document.querySelector(`input[name='bot'][value='${status}']`);
@@ -65,7 +64,7 @@ export function renderBotEnable(param) {
             const checkmark = selectedLabel.querySelector('.checkmark');
             checkmark.style.display = 'inline';
         };
-        // if (flag) Telegram.WebApp.showAlert(bot)
+
         if (flag) {
             const result = await toggleBot(param.api, status);
             if (result) {

@@ -30,6 +30,5 @@ export function renderMain() {
     document.getElementById('myBotsButton').addEventListener('click', () => {
         switchView('botList');
         addAnimation('.full-page', 'short_animation_up');
-        // Telegram.WebApp.showAlert('111');
     });
 }

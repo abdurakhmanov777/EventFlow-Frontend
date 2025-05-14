@@ -76,16 +76,12 @@ export function renderSettingsBot(param) {
             </div>
         </div>
     `);
-    // Telegram.WebApp.showAlert(JSON.stringify(param));
 
     document.getElementById('linkBot').addEventListener('click', function() {
         Telegram?.WebApp.openTelegramLink(`https://t.me/${param?.link}`);
-        // Telegram?.WebApp.showAlert(JSON.stringify(param));
     });
 
     document.getElementById('toggleStatusBot').addEventListener('click', function() {
-        // Telegram.WebApp.showAlert(this.value);
-
         switchView('botEnable', param);
     });
 
@@ -95,7 +91,6 @@ export function renderSettingsBot(param) {
             if (ok) {
                 const result = await deleteBot(param.name);
                 if (result) {
-                    // Telegram.WebApp.showAlert(data?.settingsBot.delete.success);
                     switchView('botList');
                 }
             }

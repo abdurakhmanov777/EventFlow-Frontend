@@ -1,4 +1,3 @@
-// import { mocksRender } from './chat/mocks.js';
 import { sendBotData } from '../../../api/api.js';
 import { addAnimation } from '../../../utils/animations.js';
 import { switchView } from '../../init.js';
@@ -39,8 +38,6 @@ export function renderCreateBot() {
         }
     });
 
-    // document.getElementById('botNameInput').addEventListener('input', clearError);
-    // document.getElementById('botApiInput').addEventListener('input', clearError);
     document.getElementById('botNameInput').addEventListener('focus', clearError);
     document.getElementById('botApiInput').addEventListener('focus', clearError);
 }
@@ -68,14 +65,12 @@ async function submitForm(data) {
 
     const result = await sendBotData(name, api);
     if (result) {
-        // Telegram.WebApp.showAlert(result.link);
         if (result.status === true) {
             switchView('settingsBot', {
                 name: name,
                 api: api,
                 link: result.link,
             });
-            // Telegram.WebApp.showAlert(data.createBot.success.true);
         } else if (!result.api && !result.name) {
             Telegram.WebApp.showAlert(data.createBot.error.invalid);
         } else {
