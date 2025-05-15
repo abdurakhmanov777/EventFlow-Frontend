@@ -1,8 +1,8 @@
-#editorSection {
+#settingsBotSection {
     display: flex;
     flex-direction: column;
 }
 
-#editorSection > *:not(:first-child) {
+#settingsBotSection > *:not(:first-child) {
     margin-bottom: 18px;
 }

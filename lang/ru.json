@@ -38,6 +38,13 @@
         }
     },
 
+    "editor": {
+        "buttons": {
+            "add": "Добавить",
+            "save": "Сохранить"
+        }
+    },
+
     "settings" : {
         "account": {
             "name": "Аккаунт",

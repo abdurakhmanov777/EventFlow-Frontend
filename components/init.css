@@ -26,6 +26,7 @@
 [data-theme="light"] {
     --bg-color: #ffffff;
     --container-color: #e4e7e8a1;
+    /* --container-color: #e3e3e3c6; */
     --footer-color: #4e596093;
     --subtitle-text-color: #4e59609c;
     --text-color: #000000;

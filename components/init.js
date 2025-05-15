@@ -12,6 +12,7 @@ import { addAnimation } from '../utils/animations.js';
 import { initTheme } from '../utils/theme.js';
 import { renderSettingsBot } from './pages/settingsBot/settingsBot.js';
 import { renderBotEnable } from './pages/options/bot.js';
+import { editorBot } from './pages/editor/editor.js';
 
 const tg = Telegram?.WebApp;
 let currentView = sessionStorage.getItem('page') || 'main';
@@ -27,12 +28,13 @@ const renderers = {
     language: renderLanguage,
     theme: renderTheme,
     account: renderAccount,
+    editor: editorBot
 };
 
 export function switchView(view, param = null) {
     currentView = view;
 
-    if (['settingsBot', 'botEnable'].includes(view)) {
+    if (['settingsBot', 'botEnable', 'editor'].includes(view)) {
         const settings = param || JSON.parse(sessionStorage.getItem('pageSettings') || '{}');
         renderers[view](settings);
         sessionStorage.setItem('pageSettings', JSON.stringify(settings));
@@ -72,7 +74,8 @@ export const initializeApp = async () => {
                     'language': 'settings',
                     'theme': 'settings',
                     'settingsBot': 'botList',
-                    'botEnable': 'settingsBot'
+                    'botEnable': 'settingsBot',
+                    'editor': 'settingsBot'
                 };
                 switchView(views[currentView] || 'main');
                 addAnimation('.page', 'short_animation_down');

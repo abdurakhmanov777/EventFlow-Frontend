@@ -38,6 +38,13 @@
         }
     },
 
+    "editor": {
+        "buttons": {
+            "add": "Add",
+            "save": "Save"
+        }
+    },
+
     "settings" : {
         "account": {
             "name": "Account",

@@ -1,0 +1,29 @@
+#editorSection {
+    display: flex;
+    flex-direction: column;
+}
+
+#canvas {
+    border: 1px solid var(--subtitle-text-color);
+    display: block;
+    border-radius: 18px;
+}
+
+
+
+#buttonsContainer {
+    display: flex;
+    width: 100%;
+    /* background-color: red; */
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+#buttonsContainer button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    min-width: 120px;
+    background-color: transparent;
+    color: var(--accent-color);
+}

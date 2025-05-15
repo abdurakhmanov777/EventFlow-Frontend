@@ -12,7 +12,7 @@ export function renderSettingsBot(param) {
 
     document.querySelector('#root').innerHTML = '';
     document.querySelector('#root').insertAdjacentHTML('afterbegin', `
-        <div id='editorSection' class='full-page'>
+        <div id='settingsBotSection' class='full-page'>
             <h2>${param?.name}</h2>
             <div id='botListContainer' class='settings-list'">
                 <button id='toggleStatusBot' class='settings-item' value='${param?.api}'>
@@ -79,6 +79,10 @@ export function renderSettingsBot(param) {
 
     document.getElementById('linkBot').addEventListener('click', function() {
         Telegram?.WebApp.openTelegramLink(`https://t.me/${param?.link}`);
+    });
+
+    document.getElementById('editorBot').addEventListener('click', function() {
+        switchView('editor', param);
     });
 
     document.getElementById('toggleStatusBot').addEventListener('click', function() {
