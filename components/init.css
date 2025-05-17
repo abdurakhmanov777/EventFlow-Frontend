@@ -14,6 +14,7 @@
 
 [data-theme="dark"] {
     --bg-color: #0e1011;
+    --bg-download-color: rgba(14, 16, 17, 0.5);
     --container-color: #202528;
     --footer-color: #bdcdd577;
     --subtitle-text-color: #c5d0d578;
@@ -25,6 +26,8 @@
 
 [data-theme="light"] {
     --bg-color: #ffffff;
+    --bg-download-color: rgba(255, 255, 255, 0.5);
+    --download-color: rgba(255, 255, 255, 0.5);
     --container-color: #e4e7e8a1;
     /* --container-color: #e3e3e3c6; */
     --footer-color: #4e596093;
