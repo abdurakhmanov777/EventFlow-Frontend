@@ -9,6 +9,9 @@ export function renderCreateBot() {
 
     document.querySelector('#root').innerHTML = '';
     document.querySelector('#root').insertAdjacentHTML('afterbegin', `
+        <div id="loaderOverlay">
+            <div id="formLoader" class="loader"></div>
+        </div>
         <form id='createBot' class='full-page'>
             <input type='text' placeholder='${data.createBot.placeholder.name}' id='botNameInput'>
             <div id='botNameError' class='error-message'></div>
@@ -30,11 +33,15 @@ export function renderCreateBot() {
     });
     document.getElementById('nextButton').addEventListener('click', async () => {
         const button = document.getElementById('nextButton');
+        const overlay = document.getElementById('loaderOverlay');
+        
         button.disabled = true;
+        overlay.style.display = 'flex';
         try {
             await submitForm(data);
         } finally {
             button.disabled = false;
+            overlay.style.display = 'none';
         }
     });
 
