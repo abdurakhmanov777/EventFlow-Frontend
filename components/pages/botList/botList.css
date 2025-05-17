@@ -1,6 +1,6 @@
 #botListContainer {
     background-color: var(--container-color);
-    border-radius: 18px;
+    border-radius: 16px;
     width: 100%;
     display: flex;
     flex-direction: column;
