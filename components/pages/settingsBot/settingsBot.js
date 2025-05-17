@@ -93,9 +93,15 @@ export function renderSettingsBot(param) {
     document.getElementById('deleteBot').addEventListener('click', function() {
         Telegram.WebApp.showConfirm(data?.settingsBot.delete.confirm, async function(ok) {
             if (ok) {
-                const result = await deleteBot(param.name);
-                if (result) {
-                    switchView('botList');
+                const button = document.getElementById('deleteBot');
+                button.disabled = true;
+                try {
+                    const result = await deleteBot(param.name);
+                    if (result) {
+                        switchView('botList');
+                    }
+                } finally {
+                    button.disabled = false;
                 }
             }
         });
