@@ -5,8 +5,8 @@
     width: 100%;
     height: 100%;
     background-color: var(--bg-download-color);
-    display: none;
-    /* display: flex; */
+    /* display: none; */
+    display: flex;
     justify-content: center;
     align-items: center;
     z-index: 9999;
@@ -39,15 +39,21 @@
     width: inherit;
     height: inherit;
     border-radius: 50%;
+    animation: 1s linear infinite;
+}
+
+.loader:before {
     transform: rotateX(70deg);
-    animation: 1s spin linear infinite;
+    color: var(--text-color);
+    animation-name: spin;
 }
 
 .loader:after {
-    color: var(--input-focus-color);
     transform: rotateY(70deg);
-    animation-delay: .4s;
+    color: var(--input-focus-color);
+    animation-name: spinShifted;
 }
+
 
 @keyframes rotate {
     0% {
@@ -68,8 +74,7 @@
 }
 
 @keyframes spin {
-    0%,
-    100% {
+    0%, 100% {
         box-shadow: .2em 0px 0 0px currentcolor;
     }
     12% {
@@ -92,6 +97,34 @@
     }
     87% {
         box-shadow: .2em -.2em 0 0 currentcolor;
+    }
+}
+
+/* Вторая анимация, начинается с 50% первой */
+@keyframes spinShifted {
+    0%, 100% {
+        box-shadow: -.2em 0 0 0 currentcolor; /* соответствует 50% из первой */
+    }
+    12% {
+        box-shadow: -.2em -.2em 0 0 currentcolor;
+    }
+    25% {
+        box-shadow: 0px -.2em 0 0 currentcolor;
+    }
+    37% {
+        box-shadow: .2em -.2em 0 0 currentcolor;
+    }
+    50% {
+        box-shadow: .2em 0px 0 0px currentcolor;
+    }
+    62% {
+        box-shadow: .2em .2em 0 0 currentcolor;
+    }
+    75% {
+        box-shadow: 0 .2em 0 0px currentcolor;
+    }
+    87% {
+        box-shadow: -.2em .2em 0 0 currentcolor;
     }
 }
 
