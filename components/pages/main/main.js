@@ -29,6 +29,6 @@ export function renderMain() {
     });
     document.getElementById('myBotsButton').addEventListener('click', () => {
         switchView('botList');
-        addAnimation('.full-page', 'short_animation_up');
+        // addAnimation('#botList', 'short_animation_up');
     });
 }

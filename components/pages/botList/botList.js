@@ -1,7 +1,7 @@
 import { fetchBotList } from "../../../api/api.js";
 import { icon_arrow } from "../../../img/icons.js";
 import { activation_check } from "../../../utils/bot.js";
-import { switchView } from "../../init.js";
+import { getCurrentView, switchView } from "../../init.js";
 
 export async function renderBotList() {
     const root = document.querySelector('#root');
@@ -15,7 +15,7 @@ export async function renderBotList() {
     const result = await fetchBotList();
 
     // Проверяем, остался ли пользователь на этой же странице
-    if (root.dataset.view !== 'botList') return;
+    if (getCurrentView() !== 'botList') return;
 
     const hasBots = result?.length > 0;
     let botItemsHtml = '';

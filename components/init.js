@@ -17,6 +17,10 @@ import { editorBot } from './pages/editor/editor.js';
 const tg = Telegram?.WebApp;
 let currentView = sessionStorage.getItem('page') || 'main';
 
+export function getCurrentView() {
+    return currentView;
+}
+
 const renderers = {
     main: renderMain,
     createBot: renderCreateBot,
