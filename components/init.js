@@ -31,33 +31,33 @@ const renderers = {
     editor: editorBot
 };
 
+const viewsWithSettings = new Set(['settingsBot', 'botEnable', 'editor']);
+const viewsWithTopPanel = new Set(['main', 'subscription', 'settings']);
+const backRoutes = {
+    account: 'settings',
+    language: 'settings',
+    theme: 'settings',
+    settingsBot: 'botList',
+    botEnable: 'settingsBot',
+    editor: 'settingsBot'
+};
+
 export function switchView(view, param = null) {
     currentView = view;
+    const render = renderers[view] || renderMain;
 
-    if (['settingsBot', 'botEnable', 'editor'].includes(view)) {
+    if (viewsWithSettings.has(view)) {
         const settings = param || JSON.parse(sessionStorage.getItem('pageSettings') || '{}');
-        renderers[view](settings);
+        render(settings);
         sessionStorage.setItem('pageSettings', JSON.stringify(settings));
     } else {
-        (renderers[view] || renderMain)();
+        render();
     }
 
-    toggleTopPanel(view);
-    toggleBackButton();
+    document.getElementById('topPanel').style.display = viewsWithTopPanel.has(view) ? 'flex' : 'none';
+    tg.BackButton[currentView === 'main' ? 'hide' : 'show']?.();
     updateActiveButton(view);
-
     sessionStorage.setItem('page', view);
-}
-
-function toggleTopPanel(view) {
-    const displayStyle = ['main', 'subscription', 'settings'].includes(view) ? 'flex' : 'none';
-    document.getElementById('topPanel').style.display = displayStyle;
-}
-
-
-function toggleBackButton() {
-    const action = currentView === 'main' ? 'hide' : 'show';
-    tg.BackButton[action]();
 }
 
 export const initializeApp = async () => {
@@ -67,25 +67,14 @@ export const initializeApp = async () => {
         await initLocalization();
         renderSidebar();
         switchView(currentView);
-        if (tg?.BackButton?.onClick) {
-            tg.BackButton.onClick(() => {
-                const views = {
-                    'account': 'settings',
-                    'language': 'settings',
-                    'theme': 'settings',
-                    'settingsBot': 'botList',
-                    'botEnable': 'settingsBot',
-                    'editor': 'settingsBot'
-                };
-                switchView(views[currentView] || 'main');
-                addAnimation('.page', 'short_animation_down');
-            });
-        }
+
+        tg?.BackButton?.onClick?.(() => {
+        switchView(backRoutes[currentView] || 'main');
+        addAnimation('.page', 'short_animation_down');
+        });
     };
 
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', start);
-    } else {
-        await start();
-    }
+    document.readyState === 'loading'
+        ? document.addEventListener('DOMContentLoaded', start)
+        : await start();
 };

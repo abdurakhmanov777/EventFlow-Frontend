@@ -34,7 +34,7 @@ export function renderCreateBot() {
     document.getElementById('nextButton').addEventListener('click', async () => {
         const button = document.getElementById('nextButton');
         const overlay = document.getElementById('loaderOverlay');
-        
+
         button.disabled = true;
         overlay.style.display = 'flex';
         try {
