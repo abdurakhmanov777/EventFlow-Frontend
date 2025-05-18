@@ -1,9 +1,17 @@
-export function addAnimation(class_name, animation_class) {
-    const pageElement = document.querySelector(class_name);
-    if (!pageElement) return;
+export function addAnimation(selector, animation_class) {
+    const element = document.querySelector(selector);
+    if (!element) return;
 
-    pageElement.classList.remove('animate', 'animate_long');
-    void pageElement.offsetWidth;
+    void element.offsetWidth; // Сброс потока для перезапуска анимации
 
-    pageElement.classList.add(animation_class);
+    // Добавляем класс анимации
+    element.classList.add(animation_class);
+
+    // Удаляем анимационный класс после завершения анимации
+    const handleAnimationEnd = () => {
+        element.classList.remove(animation_class);
+        element.removeEventListener('animationend', handleAnimationEnd);
+    };
+
+    element.addEventListener('animationend', handleAnimationEnd);
 }
