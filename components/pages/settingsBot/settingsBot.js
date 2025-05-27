@@ -1,4 +1,4 @@
-import { deleteBot } from '../../../api/api.js';
+import { deleteBot } from '../../../requests/requests.js';
 import { icon_arrow, icon_delete, icon_editor, icon_link } from '../../../img/icons.js';
 import { activation_check } from '../../../utils/bot.js';
 import { switchView } from '../../init.js';

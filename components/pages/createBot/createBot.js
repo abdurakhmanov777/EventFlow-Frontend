@@ -1,4 +1,4 @@
-import { sendBotData } from '../../../api/api.js';
+import { sendBotData } from '../../../requests/requests.js';
 import { addAnimation } from '../../../utils/animations.js';
 import { switchView } from '../../init.js';
 

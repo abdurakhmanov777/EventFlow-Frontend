@@ -1,4 +1,4 @@
-import { toggleBot } from '../../../api/api.js';
+import { toggleBot } from '../../../requests/requests.js';
 import { icon_checkmark } from '../../../img/icons.js';
 import { activation_check } from '../../../utils/bot.js';
 

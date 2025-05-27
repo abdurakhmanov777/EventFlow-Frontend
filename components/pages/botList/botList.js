@@ -1,4 +1,4 @@
-import { fetchBotList } from "../../../api/api.js";
+import { fetchBotList } from "../../../requests/requests.js";
 import { icon_arrow } from "../../../img/icons.js";
 import { activation_check } from "../../../utils/bot.js";
 import { getCurrentView, switchView } from "../../init.js";

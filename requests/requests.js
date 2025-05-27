@@ -1,6 +1,6 @@
 // const BASE_URL = 'https://lh7fk1md-8000.euw.devtunnels.ms';
-// const BASE_URL = 'http://127.0.0.1:8000';
-const BASE_URL = 'https://a33756-9a2f.u.d-f.pw';
+const BASE_URL = 'http://127.0.0.1:8000';
+// const BASE_URL = 'https://a33756-9a2f.u.d-f.pw';
 const userId = Telegram.WebApp.initDataUnsafe.user?.id || 'unknown';
 
 async function apiRequest(endpoint, data = {}) {
