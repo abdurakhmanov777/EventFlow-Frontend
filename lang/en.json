@@ -21,7 +21,11 @@
         "status": {
             "name" : "Bot Status",
             "on" : "Enabled",
-            "off" : "Disabled"
+            "off" : "Disabled",
+            "error": {
+                "on": "Error disabling the bot. Please wait a few seconds.",
+                "off": "Error enabling the bot. Please wait a few seconds."
+            }
         },
         "editor": {
             "name" : "Editor",

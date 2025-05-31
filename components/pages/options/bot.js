@@ -33,7 +33,7 @@ export function renderBotEnable(param) {
             </div>
         </div>
     `);
-    updateBotSelection(status, false);
+    updateBotSelection(status);
 
     function filterOptionsByName(name) {
         const options = document.querySelectorAll('.settings-option');
@@ -44,23 +44,40 @@ export function renderBotEnable(param) {
     }
     const botOptions = filterOptionsByName('bot');
 
-    botOptions.forEach(option =>
-        option.addEventListener('change', async e => {
-            const currentStatus = sessionStorage.getItem('bot');
-            if (e.target.value === currentStatus) {
-                // Если кликнули на уже выбранный статус, отменяем действие (снимаем выделение)
-                e.preventDefault();
-                // Можно вернуть выбор к текущему статусу явно (на всякий случай)
-                updateBotSelection(currentStatus, false);
+    botOptions.forEach(option => {
+        option.addEventListener('click', async e => {
+            const input = option.querySelector("input[type='radio']");
+            if (e.target !== input) return;
+
+            const newValue = input.value;
+            const currentValue = sessionStorage.getItem('bot');
+            if (newValue === currentValue) {
+                updateBotSelection(currentValue);
+                input.blur();
                 return;
             }
 
-            sessionStorage.setItem('bot', e.target.value);
-            await updateBotSelection(e.target.value, true);
-        })
-    );
+            const radios = document.querySelectorAll("input[name='bot']");
+            radios.forEach(radio => radio.disabled = true);
 
-    async function updateBotSelection(status, flag) {
+            const result = await toggleBot(param.api, newValue);
+            if (result) {
+                updateBotSelection(newValue);
+                sessionStorage.setItem('bot', newValue);
+                sessionStorage.setItem('pageSettings', JSON.stringify(result));
+            } else {
+                updateBotSelection(currentValue);
+                Telegram.WebApp.showAlert(data.settingsBot.status.error[currentValue]);
+            }
+
+            setTimeout(() => radios.forEach(radio => radio.disabled = false), 2000);
+        });
+    });
+
+
+
+
+    async function updateBotSelection(status) {
         const radioButtons = document.querySelectorAll("input[name='bot']");
         radioButtons.forEach(radio => {
             const label = radio.closest('.settings-option');
@@ -74,12 +91,5 @@ export function renderBotEnable(param) {
             const checkmark = selectedLabel.querySelector('.checkmark');
             checkmark.style.display = 'inline';
         };
-
-        if (flag) {
-            const result = await toggleBot(param.api, status);
-            if (result) {
-                sessionStorage.setItem('pageSettings', JSON.stringify(result));
-            }
-        }
     }
 }
