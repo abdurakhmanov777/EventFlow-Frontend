@@ -45,11 +45,21 @@ export function renderBotEnable(param) {
     const botOptions = filterOptionsByName('bot');
 
     botOptions.forEach(option =>
-        option.addEventListener('change', e => {
+        option.addEventListener('change', async e => {
+            const currentStatus = sessionStorage.getItem('bot');
+            if (e.target.value === currentStatus) {
+                // Если кликнули на уже выбранный статус, отменяем действие (снимаем выделение)
+                e.preventDefault();
+                // Можно вернуть выбор к текущему статусу явно (на всякий случай)
+                updateBotSelection(currentStatus, false);
+                return;
+            }
+
             sessionStorage.setItem('bot', e.target.value);
-            updateBotSelection(e.target.value, true);
+            await updateBotSelection(e.target.value, true);
         })
     );
+
     async function updateBotSelection(status, flag) {
         const radioButtons = document.querySelectorAll("input[name='bot']");
         radioButtons.forEach(radio => {
