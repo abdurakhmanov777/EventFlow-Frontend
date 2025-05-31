@@ -57,9 +57,6 @@ export function renderBotEnable(param) {
                 return;
             }
 
-            const radios = document.querySelectorAll("input[name='bot']");
-            radios.forEach(radio => radio.disabled = true);
-
             const result = await toggleBot(param.api, newValue);
             if (result) {
                 updateBotSelection(newValue);
@@ -69,8 +66,6 @@ export function renderBotEnable(param) {
                 updateBotSelection(currentValue);
                 Telegram.WebApp.showAlert(data.settingsBot.status.error[currentValue]);
             }
-
-            setTimeout(() => radios.forEach(radio => radio.disabled = false), 2000);
         });
     });
 
