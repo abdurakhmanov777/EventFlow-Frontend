@@ -51,7 +51,8 @@ export function renderBotEnable(param) {
 
             const newValue = input.value;
             const currentValue = sessionStorage.getItem('bot');
-            if (newValue === currentValue) {
+
+            if (currentValue && newValue === currentValue) {
                 updateBotSelection(currentValue);
                 input.blur();
                 return;
