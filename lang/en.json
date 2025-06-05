@@ -23,8 +23,8 @@
             "on" : "Enabled",
             "off" : "Disabled",
             "error": {
-                "on": "Error disabling the bot. Please wait a few seconds.",
-                "off": "Error enabling the bot. Please wait a few seconds."
+                "on": "Bot is already enabled",
+                "off": "Bot is already disabled"
             }
         },
         "editor": {

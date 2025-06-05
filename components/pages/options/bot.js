@@ -52,11 +52,11 @@ export function renderBotEnable(param) {
             const newValue = input.value;
             const currentValue = sessionStorage.getItem('bot');
 
-            if (currentValue && newValue === currentValue) {
-                updateBotSelection(currentValue);
-                input.blur();
-                return;
-            }
+            // if (currentValue && newValue === currentValue) {
+            //     updateBotSelection(currentValue);
+            //     input.blur();
+            //     return;
+            // }
 
             const result = await toggleBot(param.api, newValue);
             if (result) {
@@ -79,6 +79,7 @@ export function renderBotEnable(param) {
             const label = radio.closest('.settings-option');
             const checkmark = label.querySelector('.checkmark');
             checkmark.style.display = 'none';
+            radio.disabled = false; // сначала разблокируем все
         });
 
         const selectedRadio = document.querySelector(`input[name='bot'][value='${status}']`);
@@ -86,6 +87,7 @@ export function renderBotEnable(param) {
             const selectedLabel = selectedRadio.closest('.settings-option');
             const checkmark = selectedLabel.querySelector('.checkmark');
             checkmark.style.display = 'inline';
+            selectedRadio.disabled = true;
         };
     }
 }
