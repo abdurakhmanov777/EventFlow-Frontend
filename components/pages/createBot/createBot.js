@@ -60,11 +60,13 @@ async function submitForm(data) {
     const apiRegex = /\d{10}:[\w-]{35}/g;
 
     const errors = [];
-    if (name.length < 2) errors.push(data.createBot.error.name);
-    if (!api.match(apiRegex)) errors.push(data.createBot.error.api);
+    const check_1 = name.length < 2
+    const check_2 = !api.match(apiRegex)
+    if (check_1) errors.push(data.createBot.error.name);
+    if (check_2) errors.push(data.createBot.error.api);
 
-    botNameInput.classList.toggle('error', name.length < 5);
-    botApiInput.classList.toggle('error', api.length < 5);
+    botNameInput.classList.toggle('error', check_1);
+    botApiInput.classList.toggle('error', check_2);
 
     if (errors.length) {
         return Telegram.WebApp.showAlert(`${data.createBot.error.incorrect}: ${errors.join(', ')}`);
