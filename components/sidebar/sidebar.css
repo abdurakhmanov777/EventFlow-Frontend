@@ -44,8 +44,9 @@
 }
 
 #sidebarFooter {
+    font-family: 'sidebarFooter', sans-serif;
     text-align: center;
-    padding: 15px;
+    padding: 20px;
     color: var(--footer-color);
     font-size: 15px;
     margin-top: auto;

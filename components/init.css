@@ -1,5 +1,21 @@
+@font-face {
+    font-family: 'Main';
+    src: url('../fonts/Rubik.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'sidebarFooter';
+    src: url('../fonts/Charm.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
 * {
-    font-family: sans-serif;
+    font-family: 'Main', sans-serif;
     margin: 0;
     padding: 0;
 }
@@ -77,6 +93,7 @@ button {
     width: 48%;
     font-size: 18px;
     font-weight: bold;
+    /* font-family: 'Bold', sans-serif; */
     color: var(--text-button-color);
     background-color: var(--accent-color);
 }
