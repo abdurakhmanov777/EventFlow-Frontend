@@ -2,6 +2,7 @@ import { deleteBot } from '../../../requests/requests.js';
 import { icon_arrow, icon_delete, icon_editor, icon_link } from '../../../img/icons.js';
 import { activation_check } from '../../../utils/bot.js';
 import { switchView } from '../../init.js';
+import { addAnimation } from '../../../utils/animations.js';
 
 
 export function renderSettingsBot(param) {
@@ -83,10 +84,12 @@ export function renderSettingsBot(param) {
 
     document.getElementById('editorBot').addEventListener('click', function() {
         switchView('editor', param);
+        addAnimation('.full-page', 'animation_left');
     });
 
     document.getElementById('toggleStatusBot').addEventListener('click', function() {
         switchView('botEnable', param);
+        addAnimation('.full-page', 'animation_left');
     });
 
 

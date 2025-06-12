@@ -2,60 +2,66 @@ import { fetchBotList } from "../../../requests/requests.js";
 import { icon_arrow } from "../../../img/icons.js";
 import { activation_check } from "../../../utils/bot.js";
 import { getCurrentView, switchView } from "../../init.js";
+import { addAnimation } from "../../../utils/animations.js";
 
 export async function renderBotList() {
     const root = document.querySelector('#root');
-
-    // Устанавливаем текущий экран в root (для проверки актуальности)
     root.dataset.view = 'botList';
+
     const lang = localStorage.getItem('language') || 'ru';
     const data = JSON.parse(sessionStorage.getItem(`lang_${lang}`));
     const { botList } = data;
 
-    const result = await fetchBotList();
-
-    // Проверяем, остался ли пользователь на этой же странице
-    if (getCurrentView() !== 'botList') return;
-
-    const hasBots = result?.length > 0;
-    let botItemsHtml = '';
-
-    if (hasBots) {
-        botItemsHtml = result.map(({ name, api, link, status }) => {
-            const updatedStatus = activation_check(data, status);
-            return `
-                <button class="settings-item" id="${name}" value='${JSON.stringify({ api, link, status })}'>
-                    <div class="icon">${updatedStatus.icon}</div>
-                    <div class="content">
-                        <span class="title">${name}</span>
-                        <span class="value">${botList.edit}${icon_arrow}</span>
-                    </div>
-                </button>
-            `;
-        }).join('');
-    }
-
+    // Скелет экрана до загрузки
     root.innerHTML = `
         <div id="botList" class="full-page">
-            <h2 id="botListHeader" style="display: ${hasBots ? 'block' : 'none'}">${botList.header}</h2>
-            <div id="botListContainer" class="settings-list" style="display: ${hasBots ? 'block' : 'none'}">
-                ${botItemsHtml}
-            </div>
-            <p id="noBotsMessage" class="no-bots-message" style="display: ${hasBots ? 'none' : 'block'}">${botList.noBots}</p>
+            <h2 id="botListHeader" style="display: none;"></h2>
+            <div id="botListContainer" class="settings-list" style="display: none;"></div>
+            <p id="noBotsMessage" class="no-bots-message" style="display: none;"></p>
         </div>
     `;
 
+    const result = await fetchBotList();
+    if (getCurrentView() !== 'botList') return;
+
+    const hasBots = result?.length > 0;
+
+    const botListHeader = root.querySelector('#botListHeader');
+    const botListContainer = root.querySelector('#botListContainer');
+    const noBotsMessage = root.querySelector('#noBotsMessage');
+
     if (hasBots) {
-        root.querySelectorAll('.settings-item').forEach(button => {
+        const fragment = document.createDocumentFragment();
+
+        result.forEach(({ name, api, link, status }) => {
+            const updatedStatus = activation_check(data, status);
+
+            const button = document.createElement('button');
+            button.className = 'settings-item';
+            button.id = name;
+            button.value = JSON.stringify({ api, link, status });
+            button.innerHTML = `
+                <div class="icon">${updatedStatus.icon}</div>
+                <div class="content">
+                    <span class="title">${name}</span>
+                    <span class="value">${botList.edit}${icon_arrow}</span>
+                </div>
+            `;
             button.addEventListener('click', () => {
-                const { api, link, status } = JSON.parse(button.value);
-                switchView('settingsBot', {
-                    name: button.id,
-                    link,
-                    api,
-                    status,
-                });
+                switchView('settingsBot', { name, link, api, status });
+                addAnimation('.full-page', 'animation_left');
             });
+
+            fragment.appendChild(button);
         });
+
+        botListHeader.style.display = 'block';
+        botListContainer.style.display = 'block';
+        botListContainer.appendChild(fragment);
+    } else {
+        noBotsMessage.style.display = 'block';
+        noBotsMessage.textContent = botList.noBots;
     }
+
+    botListHeader.textContent = botList.header;
 }

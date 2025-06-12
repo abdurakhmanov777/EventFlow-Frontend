@@ -106,6 +106,7 @@ export function renderSettings() {
     });
     document.getElementById('settingsSubscriptionBtn').addEventListener('click', () => {
         switchView('subscription');
+        addAnimation('.page', 'short_animation_up');
     });
     document.getElementById('accountBtn').addEventListener('click', () => {
         switchView('account');

@@ -79,6 +79,8 @@ body, #root {
 .page {
     height: calc(100% - 80px);
     margin-top: 60px;
+    overflow-y: scroll; /* или auto */
+    scrollbar-width: none;
 }
 
 .full-page {
@@ -96,35 +98,4 @@ button {
     /* font-family: 'Bold', sans-serif; */
     color: var(--text-button-color);
     background-color: var(--accent-color);
-}
-
-
-.short_animation_down {
-    animation: slideOut 0.1s forwards;
-}
-
-.short_animation_up {
-    animation: slideIn 0.1s forwards;
-}
-
-@keyframes slideIn {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes slideOut {
-    from {
-        opacity: 0;
-        transform: translateY(-30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
 }

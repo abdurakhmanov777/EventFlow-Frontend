@@ -73,8 +73,11 @@ export const initializeApp = async () => {
         switchView(currentView);
 
         tg?.BackButton?.onClick?.(() => {
-        switchView(backRoutes[currentView] || 'main');
-        addAnimation('.page', 'short_animation_down');
+            switchView(backRoutes[currentView] || 'main');
+            addAnimation('.page', 'short_animation_down');
+            if (['botList', 'settingsBot'].includes(currentView)) {
+                addAnimation('.full-page', 'animation_right');
+            }
         });
     };
 

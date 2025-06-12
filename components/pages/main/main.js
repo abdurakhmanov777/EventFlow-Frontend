@@ -4,12 +4,12 @@ import { sidebar_passive } from '../../sidebar/sidebar.js';
 
 export function renderMain() {
     sidebar_passive();
-
+    const root = document.querySelector('#root');
     const lang = localStorage.getItem('language') || 'ru';
     const data = JSON.parse(sessionStorage.getItem(`lang_${lang}`));
 
-    document.querySelector('#root').innerHTML = '';
-    document.querySelector('#root').insertAdjacentHTML('afterbegin', `
+    root.innerHTML = '';
+    root.insertAdjacentHTML('afterbegin', `
         <div id='main' class='page'>
             <h1>${data?.main.header}</h1>
             <div id='buttonContainer'>
@@ -29,6 +29,6 @@ export function renderMain() {
     });
     document.getElementById('myBotsButton').addEventListener('click', () => {
         switchView('botList');
-        // addAnimation('#botList', 'short_animation_up');
+        addAnimation('.full-page', 'long_animation_up');
     });
 }
